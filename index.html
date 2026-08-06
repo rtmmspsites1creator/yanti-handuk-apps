@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<title>Yanti Handuk Apps</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+  body { font-family: 'Inter', sans-serif; background-color: #efece6; }
+  .font-display { font-family: 'Plus Jakarta Sans', sans-serif; }
+  ::-webkit-scrollbar { display: none; }
+  .app-container { height: 100vh; height: 100dvh; }
+  .fade-in { animation: fadeIn .18s ease-out; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(4px);} to { opacity: 1; transform: translateY(0);} }
+  .sheet-in { animation: sheetIn .28s cubic-bezier(.32,.72,0,1); }
+  @keyframes sheetIn { from { transform: translateY(100%);} to { transform: translateY(0);} }
+  .toast-in { animation: toastIn .25s cubic-bezier(.32,.72,0,1); }
+  @keyframes toastIn { from { opacity:0; transform: translateY(-12px) scale(.96);} to { opacity:1; transform: translateY(0) scale(1);} }
+  .pop-in { animation: popIn .18s cubic-bezier(.32,.72,0,1); }
+  @keyframes popIn { from { opacity:0; transform: scale(.94);} to { opacity:1; transform: scale(1);} }
+  input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button { -webkit-appearance: none; margin:0; }
+  .safe-b { padding-bottom: env(safe-area-inset-bottom); }
+</style>
+</head>
+<body class="flex justify-center items-center h-screen overflow-hidden bg-stone-200">
+
+<div class="app-container w-full max-w-md bg-[#FAF8F5] relative shadow-2xl flex flex-col overflow-hidden">
+
+  <!-- HEADER -->
+  <header class="bg-[#FAF8F5]/95 backdrop-blur px-5 pt-5 pb-4 border-b border-stone-200/70 flex items-center justify-between z-20 shrink-0">
+    <div class="flex items-center gap-3 min-w-0">
+      <div class="w-11 h-11 rounded-2xl bg-teal-50 flex items-center justify-center shrink-0 border border-teal-100">
+        <svg class="w-6 h-6 text-teal-700" viewBox="0 0 24 24" fill="none">
+          <rect x="3" y="5" width="18" height="3.2" rx="1.6" fill="currentColor" opacity="0.9"/>
+          <rect x="3" y="10.4" width="18" height="3.2" rx="1.6" fill="currentColor" opacity="0.65"/>
+          <rect x="3" y="15.8" width="12" height="3.2" rx="1.6" fill="currentColor" opacity="0.4"/>
+        </svg>
+      </div>
+      <div class="min-w-0">
+        <h1 id="toko-nama-label" class="text-lg font-bold text-stone-900 tracking-tight font-display truncate">Yanti Handuk</h1>
+        <p class="text-xs text-stone-400 font-medium">Buku Catatan Owner</p>
+      </div>
+    </div>
+    <button onclick="switchTab('pengaturan')" class="w-10 h-10 rounded-full bg-white border border-stone-200 flex items-center justify-center active:scale-90 transition-transform shrink-0">
+      <svg class="w-5 h-5 text-stone-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+    </button>
+  </header>
+
+  <!-- MAIN -->
+  <main class="flex-1 overflow-y-auto p-5 pb-32">
+
+    <!-- ================= DASHBOARD ================= -->
+    <div id="page-dashboard" class="page-section fade-in">
+      <div class="flex items-center justify-between mb-4">
+        <h2 class="text-sm font-bold text-stone-400 uppercase tracking-widest">Kinerja Bisnis</h2>
+      </div>
+
+      <div id="dash-periode" class="flex gap-2 mb-5 overflow-x-auto"></div>
+
+      <div class="space-y-3 mb-6">
+        <div class="bg-white p-5 rounded-2xl border border-stone-200 shadow-sm flex items-center justify-between">
+          <div>
+            <p class="text-sm text-stone-500 font-medium mb-1">Total Omzet</p>
+            <p class="text-2xl font-bold text-stone-900 font-display" id="dash-omzet">Rp 0</p>
+          </div>
+          <div class="bg-teal-50 p-3 rounded-full border border-teal-100">
+            <svg class="w-6 h-6 text-teal-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+          </div>
+        </div>
+
+        <div class="bg-gradient-to-br from-teal-800 to-teal-950 p-5 rounded-2xl shadow-md flex items-center justify-between">
+          <div>
+            <p class="text-sm text-teal-100 font-medium mb-1">Profit Bersih</p>
+            <p class="text-2xl font-bold text-white font-display" id="dash-profit">Rp 0</p>
+          </div>
+          <div class="bg-white/10 p-3 rounded-full">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+          <div class="bg-white p-4 rounded-2xl border border-stone-200 shadow-sm">
+            <p class="text-xs text-stone-500 font-medium mb-1">Transaksi</p>
+            <p class="text-xl font-bold text-stone-900 font-display" id="dash-trx">0</p>
+          </div>
+          <div class="bg-white p-4 rounded-2xl border border-stone-200 shadow-sm">
+            <p class="text-xs text-stone-500 font-medium mb-1">Nilai Stok Gudang</p>
+            <p class="text-xl font-bold text-stone-900 font-display" id="dash-aset">Rp 0</p>
+          </div>
+        </div>
+      </div>
+
+      <h2 class="text-sm font-bold text-stone-400 mb-3 uppercase tracking-widest">Produk Terlaris</h2>
+      <div class="bg-white rounded-2xl border border-stone-200 p-5 shadow-sm mb-6">
+        <ul id="terlaris-list" class="space-y-3 text-base text-stone-800"></ul>
+      </div>
+
+      <h2 class="text-sm font-bold text-stone-400 mb-3 uppercase tracking-widest">Peringatan Stok</h2>
+      <div class="bg-white rounded-2xl border border-stone-200 p-5 shadow-sm">
+        <ul id="stok-tipis-list" class="space-y-3 text-base text-stone-800"></ul>
+      </div>
+    </div>
+
+    <!-- ================= GUDANG ================= -->
+    <div id="page-gudang" class="page-section hidden fade-in">
+      <div class="flex items-center justify-between mb-4">
+        <h2 class="text-sm font-bold text-stone-400 uppercase tracking-widest">Gudang</h2>
+        <button onclick="openProdukModal('add')" class="flex items-center gap-1.5 bg-teal-700 text-white text-sm font-bold px-4 py-2.5 rounded-xl active:scale-95 transition-transform">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"></path></svg>
+          Tambah
+        </button>
+      </div>
+
+      <div class="relative mb-4">
+        <svg class="w-5 h-5 text-stone-400 absolute left-4 top-1/2 -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35M17 10a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+        <input id="gudang-search" oninput="renderGudang()" type="text" placeholder="Cari nama handuk..." class="w-full bg-white border border-stone-200 text-stone-900 text-base rounded-xl pl-11 pr-4 py-3.5 outline-none focus:border-teal-700 focus:ring-1 focus:ring-teal-700">
+      </div>
+
+      <div class="bg-white rounded-2xl border border-stone-200 p-4 mb-5 flex items-center justify-between shadow-sm">
+        <span class="text-sm font-medium text-stone-500">Total Nilai Stok (modal)</span>
+        <span class="text-base font-bold text-stone-900" id="gudang-aset">Rp 0</span>
+      </div>
+
+      <div id="list-produk" class="space-y-3"></div>
+      <div id="gudang-empty" class="hidden text-center py-10">
+        <p class="text-stone-400 font-medium text-sm">Belum ada handuk terdaftar.<br>Tap "Tambah" untuk mulai isi gudang.</p>
+      </div>
+    </div>
+
+    <!-- ================= RIWAYAT ================= -->
+    <div id="page-riwayat" class="page-section hidden fade-in">
+      <h2 class="text-sm font-bold text-stone-400 mb-4 uppercase tracking-widest">Riwayat Transaksi</h2>
+      <div id="riwayat-periode" class="flex gap-2 mb-4 overflow-x-auto"></div>
+      <div id="list-riwayat" class="space-y-3"></div>
+      <div id="riwayat-empty" class="hidden text-center py-10">
+        <p class="text-stone-400 font-medium text-sm">Belum ada transaksi pada periode ini.</p>
+      </div>
+    </div>
+
+    <!-- ================= PENGATURAN ================= -->
+    <div id="page-pengaturan" class="page-section hidden fade-in">
+      <h2 class="text-sm font-bold text-stone-400 mb-4 uppercase tracking-widest">Profil Toko</h2>
+      <div class="bg-white p-5 rounded-2xl border border-stone-200 shadow-sm mb-6">
+        <label class="block text-sm font-semibold text-stone-700 mb-2">Nama Toko</label>
+        <div class="flex gap-2">
+          <input id="setting-nama-toko" type="text" class="flex-1 bg-white border border-stone-300 rounded-xl p-3.5 text-base outline-none focus:border-teal-700 focus:ring-1 focus:ring-teal-700">
+          <button onclick="simpanNamaToko()" class="bg-stone-900 text-white font-bold px-4 rounded-xl active:scale-95 transition-transform text-sm">Simpan</button>
+        </div>
+      </div>
+
+      <h2 class="text-sm font-bold text-stone-400 mb-4 uppercase tracking-widest">Data & Cadangan</h2>
+      <div class="bg-white rounded-2xl border border-stone-200 shadow-sm mb-6 divide-y divide-stone-100 overflow-hidden">
+        <button onclick="exportData()" class="w-full flex items-center gap-3 p-4 text-left active:bg-stone-50 transition-colors">
+          <div class="w-10 h-10 rounded-full bg-teal-50 flex items-center justify-center shrink-0">
+            <svg class="w-5 h-5 text-teal-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 10l5 5 5-5M12 15V3"></path></svg>
+          </div>
+          <div class="flex-1">
+            <p class="font-bold text-stone-900 text-sm">Ekspor Cadangan Data</p>
+            <p class="text-xs text-stone-500">Simpan file backup .json</p>
+          </div>
+        </button>
+        <label class="w-full flex items-center gap-3 p-4 text-left active:bg-stone-50 transition-colors cursor-pointer">
+          <div class="w-10 h-10 rounded-full bg-teal-50 flex items-center justify-center shrink-0">
+            <svg class="w-5 h-5 text-teal-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M17 8l-5-5-5 5M12 3v12"></path></svg>
+          </div>
+          <div class="flex-1">
+            <p class="font-bold text-stone-900 text-sm">Impor Cadangan Data</p>
+            <p class="text-xs text-stone-500">Pulihkan dari file .json</p>
+          </div>
+          <input type="file" accept="application/json" class="hidden" onchange="importData(event)">
+        </label>
+        <button onclick="confirmResetData()" class="w-full flex items-center gap-3 p-4 text-left active:bg-rose-50 transition-colors">
+          <div class="w-10 h-10 rounded-full bg-rose-50 flex items-center justify-center shrink-0">
+            <svg class="w-5 h-5 text-rose-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6M9.5 4h5l.5 3h-6l.5-3z"></path></svg>
+          </div>
+          <div class="flex-1">
+            <p class="font-bold text-rose-600 text-sm">Reset Semua Data</p>
+            <p class="text-xs text-stone-500">Hapus permanen gudang & transaksi</p>
+          </div>
+        </button>
+      </div>
+
+      <p class="text-center text-xs text-stone-400 pb-4">Yanti Handuk Apps · v2.0 · Data tersimpan lokal di perangkat ini</p>
+    </div>
+
+  </main>
+
+  <!-- BOTTOM NAV -->
+  <nav class="bg-white border-t border-stone-200 flex justify-around items-center absolute bottom-0 w-full h-20 px-1 shrink-0 z-20 safe-b">
+    <button onclick="switchTab('dashboard')" id="nav-dashboard" class="nav-btn flex flex-col items-center w-1/5 p-2 text-stone-400 transition-colors">
+      <svg class="w-6 h-6 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+      <span class="text-[11px] font-bold">Ringkasan</span>
+    </button>
+
+    <button onclick="switchTab('gudang')" id="nav-gudang" class="nav-btn flex flex-col items-center w-1/5 p-2 text-stone-400 transition-colors">
+      <svg class="w-6 h-6 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path></svg>
+      <span class="text-[11px] font-bold">Gudang</span>
+    </button>
+
+    <button onclick="openKasirModal()" class="flex flex-col items-center w-1/5 p-2 text-stone-400">
+      <div class="bg-teal-700 text-white p-4 rounded-full -mt-10 shadow-lg border-[5px] border-white active:scale-95 transition-transform">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+      </div>
+      <span class="text-[11px] font-bold mt-1">Kasir</span>
+    </button>
+
+    <button onclick="switchTab('riwayat')" id="nav-riwayat" class="nav-btn flex flex-col items-center w-1/5 p-2 text-stone-400 transition-colors">
+      <svg class="w-6 h-6 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+      <span class="text-[11px] font-bold">Riwayat</span>
+    </button>
+
+    <button onclick="switchTab('pengaturan')" id="nav-pengaturan" class="nav-btn flex flex-col items-center w-1/5 p-2 text-stone-400 transition-colors">
+      <svg class="w-6 h-6 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+      <span class="text-[11px] font-bold">Setelan</span>
+    </button>
+  </nav>
+
+  <!-- TOAST CONTAINER -->
+  <div id="toast-container" class="absolute top-4 left-0 right-0 z-50 flex flex-col items-center gap-2 px-5 pointer-events-none"></div>
+
+  <!-- ===== MODAL: KASIR ===== -->
+  <div id="modal-kasir" class="hidden absolute inset-0 z-40">
+    <div class="absolute inset-0 bg-stone-900/40" onclick="closeKasirModal()"></div>
+    <div class="absolute bottom-0 left-0 right-0 bg-white rounded-t-3xl p-6 sheet-in safe-b max-h-[85%] overflow-y-auto">
+      <div class="w-10 h-1.5 bg-stone-200 rounded-full mx-auto mb-5"></div>
+      <h2 class="text-lg font-bold text-stone-900 font-display mb-5">Catat Penjualan</h2>
+      <form id="form-penjualan" onsubmit="catatPenjualan(event)">
+        <div class="space-y-5 mb-2">
+          <div>
+            <label class="block text-sm font-semibold text-stone-700 mb-2">Barang Terjual</label>
+            <select id="jual-produk" required onchange="updateKasirPreview()" class="w-full bg-white border border-stone-300 text-stone-900 text-base rounded-xl block p-4 outline-none focus:border-teal-700 focus:ring-1 focus:ring-teal-700"></select>
+          </div>
+          <div>
+            <label class="block text-sm font-semibold text-stone-700 mb-2">Jumlah Qty</label>
+            <div class="flex items-center gap-3">
+              <button type="button" onclick="stepQty(-1)" class="w-12 h-12 rounded-xl bg-stone-100 text-stone-700 font-bold text-xl active:scale-90 transition-transform shrink-0">−</button>
+              <input type="number" id="jual-qty" required min="1" oninput="updateKasirPreview()" class="w-full text-center bg-white border border-stone-300 text-stone-900 text-base rounded-xl p-4 outline-none focus:border-teal-700 focus:ring-1 focus:ring-teal-700" value="1">
+              <button type="button" onclick="stepQty(1)" class="w-12 h-12 rounded-xl bg-stone-100 text-stone-700 font-bold text-xl active:scale-90 transition-transform shrink-0">+</button>
+            </div>
+            <p class="text-xs text-stone-400 mt-2" id="jual-stok-info">Stok tersedia: -</p>
+          </div>
+        </div>
+
+        <div id="kasir-preview" class="bg-teal-50 border border-teal-100 rounded-2xl p-4 my-5 space-y-2 hidden">
+          <div class="flex justify-between text-sm"><span class="text-stone-500">Subtotal</span><span class="font-bold text-stone-900" id="kasir-subtotal">Rp 0</span></div>
+          <div class="flex justify-between text-sm"><span class="text-stone-500">Estimasi Profit</span><span class="font-bold text-teal-700" id="kasir-profit">Rp 0</span></div>
+          <div class="flex justify-between text-sm"><span class="text-stone-500">Sisa Stok Setelah Ini</span><span class="font-bold text-stone-900" id="kasir-sisa">0</span></div>
+        </div>
+        <p id="kasir-error" class="hidden text-sm text-rose-600 font-semibold bg-rose-50 border border-rose-200 rounded-xl p-3 mb-5 text-center"></p>
+
+        <button type="submit" id="kasir-submit-btn" class="w-full bg-teal-700 text-white font-bold text-lg py-4 rounded-xl active:scale-95 transition-transform disabled:opacity-40 disabled:active:scale-100">
+          Simpan Penjualan
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ===== MODAL: PRODUK (Tambah/Edit) ===== -->
+  <div id="modal-produk" class="hidden absolute inset-0 z-40">
+    <div class="absolute inset-0 bg-stone-900/40" onclick="closeProdukModal()"></div>
+    <div class="absolute bottom-0 left-0 right-0 bg-white rounded-t-3xl p-6 sheet-in safe-b max-h-[90%] overflow-y-auto">
+      <div class="w-10 h-1.5 bg-stone-200 rounded-full mx-auto mb-5"></div>
+      <h2 id="produk-modal-title" class="text-lg font-bold text-stone-900 font-display mb-5">Tambah Handuk Baru</h2>
+      <form id="form-produk" onsubmit="submitProduk(event)" class="space-y-4">
+        <input type="hidden" id="prod-id">
+        <div>
+          <label class="block text-sm font-semibold text-stone-700 mb-2">Nama Handuk</label>
+          <input type="text" id="prod-nama" required class="w-full bg-white border border-stone-300 rounded-xl p-4 text-base outline-none focus:border-teal-700 focus:ring-1 focus:ring-teal-700" placeholder="Ketik nama...">
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+          <div>
+            <label class="block text-sm font-semibold text-stone-700 mb-2">Harga Beli</label>
+            <input type="text" inputmode="numeric" id="prod-modal" required class="w-full bg-white border border-stone-300 rounded-xl p-4 text-base outline-none focus:border-teal-700 focus:ring-1 focus:ring-teal-700" placeholder="Rp">
+          </div>
+          <div>
+            <label class="block text-sm font-semibold text-stone-700 mb-2">Harga Jual</label>
+            <input type="text" inputmode="numeric" id="prod-jual" required class="w-full bg-white border border-stone-300 rounded-xl p-4 text-base outline-none focus:border-teal-700 focus:ring-1 focus:ring-teal-700" placeholder="Rp">
+          </div>
+        </div>
+        <p id="prod-margin-warning" class="hidden text-xs text-amber-600 font-semibold bg-amber-50 border border-amber-200 rounded-xl p-3">⚠ Harga jual tidak lebih besar dari harga beli — cek kembali sebelum disimpan.</p>
+        <div>
+          <label id="prod-stok-label" class="block text-sm font-semibold text-stone-700 mb-2">Stok Awal</label>
+          <input type="number" id="prod-stok" required min="0" class="w-full bg-white border border-stone-300 rounded-xl p-4 text-base outline-none focus:border-teal-700 focus:ring-1 focus:ring-teal-700" placeholder="Jumlah stok">
+        </div>
+        <button type="submit" class="w-full bg-teal-700 text-white font-bold text-base py-4 mt-2 rounded-xl active:scale-95 transition-transform" id="produk-submit-btn">
+          + Masukkan ke Daftar
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ===== MODAL: KONFIRMASI (generic) ===== -->
+  <div id="modal-confirm" class="hidden absolute inset-0 z-50 flex items-center justify-center px-6">
+    <div class="absolute inset-0 bg-stone-900/50" onclick="closeConfirm()"></div>
+    <div class="relative bg-white rounded-3xl p-6 w-full pop-in">
+      <h3 id="confirm-title" class="text-lg font-bold text-stone-900 font-display mb-2">Yakin?</h3>
+      <p id="confirm-desc" class="text-sm text-stone-500 mb-6">Deskripsi konfirmasi.</p>
+      <div class="flex gap-3">
+        <button onclick="closeConfirm()" class="flex-1 bg-stone-100 text-stone-700 font-bold py-3.5 rounded-xl active:scale-95 transition-transform">Batal</button>
+        <button id="confirm-action-btn" class="flex-1 bg-rose-600 text-white font-bold py-3.5 rounded-xl active:scale-95 transition-transform">Hapus</button>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+let produk = JSON.parse(localStorage.getItem('yh_produk')) || [];
+let penjualan = JSON.parse(localStorage.getItem('yh_penjualan')) || [];
+let settings = JSON.parse(localStorage.getItem('yh_settings')) || { namaToko: 'Yanti Handuk' };
+
+let dashPeriod = 'hari';
+let riwayatPeriod = 'semua';
+let confirmCallback = null;
+let editingProdukId = null;
+
+const formatRp = (angka) => new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(angka || 0);
+const parseCurrency = (str) => parseInt(String(str).replace(/\D/g, ''), 10) || 0;
+const uid = () => Date.now().toString(36) + Math.random().toString(36).slice(2, 7);
+
+function saveAll() {
+  localStorage.setItem('yh_produk', JSON.stringify(produk));
+  localStorage.setItem('yh_penjualan', JSON.stringify(penjualan));
+  localStorage.setItem('yh_settings', JSON.stringify(settings));
+}
+
+/* ---------- TOAST ---------- */
+function toast(message, type = 'success') {
+  const wrap = document.getElementById('toast-container');
+  const colors = {
+    success: 'bg-stone-900 text-white',
+    error: 'bg-rose-600 text-white',
+    info: 'bg-teal-700 text-white'
+  };
+  const el = document.createElement('div');
+  el.className = `toast-in ${colors[type]} px-5 py-3 rounded-xl shadow-lg text-sm font-bold pointer-events-auto max-w-full text-center`;
+  el.innerText = message;
+  wrap.appendChild(el);
+  setTimeout(() => { el.style.opacity = '0'; el.style.transition = 'opacity .25s'; setTimeout(() => el.remove(), 250); }, 2200);
+}
+
+/* ---------- CONFIRM MODAL ---------- */
+function openConfirm(title, desc, onConfirm, actionLabel = 'Hapus') {
+  document.getElementById('confirm-title').innerText = title;
+  document.getElementById('confirm-desc').innerText = desc;
+  const btn = document.getElementById('confirm-action-btn');
+  btn.innerText = actionLabel;
+  confirmCallback = onConfirm;
+  document.getElementById('modal-confirm').classList.remove('hidden');
+}
+function closeConfirm() {
+  document.getElementById('modal-confirm').classList.add('hidden');
+  confirmCallback = null;
+}
+document.getElementById('confirm-action-btn').addEventListener('click', () => {
+  if (confirmCallback) confirmCallback();
+  closeConfirm();
+});
+
+/* ---------- CURRENCY INPUT FORMATTING ---------- */
+function bindCurrencyInput(el) {
+  el.addEventListener('input', () => {
+    const raw = parseCurrency(el.value);
+    el.value = raw ? new Intl.NumberFormat('id-ID').format(raw) : '';
+    checkMargin();
+  });
+}
+function checkMargin() {
+  const modal = parseCurrency(document.getElementById('prod-modal').value);
+  const jual = parseCurrency(document.getElementById('prod-jual').value);
+  const warn = document.getElementById('prod-margin-warning');
+  if (modal && jual && jual <= modal) warn.classList.remove('hidden');
+  else warn.classList.add('hidden');
+}
+bindCurrencyInput(document.getElementById('prod-modal'));
+bindCurrencyInput(document.getElementById('prod-jual'));
+
+/* ---------- TABS ---------- */
+function switchTab(tabId) {
+  document.querySelectorAll('.page-section').forEach(el => el.classList.add('hidden'));
+  document.getElementById('page-' + tabId).classList.remove('hidden');
+
+  document.querySelectorAll('.nav-btn').forEach(el => {
+    el.classList.remove('text-teal-700');
+    el.classList.add('text-stone-400');
+  });
+  const navEl = document.getElementById('nav-' + tabId);
+  if (navEl) { navEl.classList.remove('text-stone-400'); navEl.classList.add('text-teal-700'); }
+
+  renderAll();
+}
+
+/* ---------- PERIOD PILLS ---------- */
+const PERIODS = [
+  { id: 'hari', label: 'Hari Ini' },
+  { id: 'minggu', label: 'Minggu Ini' },
+  { id: 'bulan', label: 'Bulan Ini' },
+  { id: 'semua', label: 'Semua' }
+];
+function renderPeriodPills(containerId, current, setter) {
+  const wrap = document.getElementById(containerId);
+  wrap.innerHTML = PERIODS.map(p => `
+    <button onclick="${setter}('${p.id}')" class="px-4 py-2 rounded-full text-sm font-bold whitespace-nowrap transition-colors ${p.id === current ? 'bg-teal-700 text-white' : 'bg-white text-stone-500 border border-stone-200'}">${p.label}</button>
+  `).join('');
+}
+function setDashPeriod(p) { dashPeriod = p; renderAll(); }
+function setRiwayatPeriod(p) { riwayatPeriod = p; renderAll(); }
+
+function inPeriod(dateStr, period) {
+  if (period === 'semua') return true;
+  const d = new Date(dateStr);
+  const now = new Date();
+  if (period === 'hari') return d.toDateString() === now.toDateString();
+  if (period === 'minggu') {
+    const day = now.getDay();
+    const diff = now.getDate() - day + (day === 0 ? -6 : 1);
+    const start = new Date(now.getFullYear(), now.getMonth(), diff);
+    start.setHours(0, 0, 0, 0);
+    return d >= start;
+  }
+  if (period === 'bulan') return d.getMonth() === now.getMonth() && d.getFullYear() === now.getFullYear();
+  return true;
+}
+
+function stokStatus(stok) {
+  if (stok <= 0) return { label: 'Habis', cls: 'bg-rose-50 text-rose-600 border-rose-200' };
+  if (stok < 5) return { label: 'Tipis', cls: 'bg-amber-50 text-amber-600 border-amber-200' };
+  return { label: 'Aman', cls: 'bg-teal-50 text-teal-700 border-teal-200' };
+}
+
+/* ---------- KASIR MODAL ---------- */
+function openKasirModal() {
+  if (produk.length === 0) { toast('Tambahkan handuk ke gudang terlebih dahulu', 'error'); switchTab('gudang'); return; }
+  const select = document.getElementById('jual-produk');
+  select.innerHTML = produk.map(p => `<option value="${p.id}">${p.nama} (Stok: ${p.stok})</option>`).join('');
+  document.getElementById('jual-qty').value = 1;
+  document.getElementById('modal-kasir').classList.remove('hidden');
+  updateKasirPreview();
+}
+function closeKasirModal() {
+  document.getElementById('modal-kasir').classList.add('hidden');
+  document.getElementById('form-penjualan').reset();
+}
+function stepQty(delta) {
+  const input = document.getElementById('jual-qty');
+  const val = Math.max(1, (parseInt(input.value, 10) || 1) + delta);
+  input.value = val;
+  updateKasirPreview();
+}
+function updateKasirPreview() {
+  const item = produk.find(p => p.id === document.getElementById('jual-produk').value);
+  const qty = parseInt(document.getElementById('jual-qty').value, 10) || 0;
+  const preview = document.getElementById('kasir-preview');
+  const errorEl = document.getElementById('kasir-error');
+  const submitBtn = document.getElementById('kasir-submit-btn');
+  const stokInfo = document.getElementById('jual-stok-info');
+  if (!item) return;
+
+  stokInfo.innerText = `Stok tersedia: ${item.stok}`;
+
+  if (item.stok <= 0) {
+    preview.classList.add('hidden');
+    errorEl.classList.remove('hidden');
+    errorEl.innerText = 'Stok handuk ini sudah habis.';
+    submitBtn.disabled = true;
+    return;
+  }
+  if (qty > item.stok) {
+    preview.classList.add('hidden');
+    errorEl.classList.remove('hidden');
+    errorEl.innerText = `Qty melebihi stok tersedia (maks ${item.stok}).`;
+    submitBtn.disabled = true;
+    return;
+  }
+  errorEl.classList.add('hidden');
+  submitBtn.disabled = false;
+  preview.classList.remove('hidden');
+  document.getElementById('kasir-subtotal').innerText = formatRp(item.jual * qty);
+  document.getElementById('kasir-profit').innerText = formatRp((item.jual - item.modal) * qty);
+  document.getElementById('kasir-sisa').innerText = item.stok - qty;
+}
+function catatPenjualan(e) {
+  e.preventDefault();
+  const produkId = document.getElementById('jual-produk').value;
+  const qty = parseInt(document.getElementById('jual-qty').value, 10);
+  const item = produk.find(p => p.id === produkId);
+  if (!item || qty <= 0 || qty > item.stok) { toast('Qty tidak valid', 'error'); return; }
+
+  item.stok -= qty;
+  const omzet = item.jual * qty;
+  const profit = (item.jual - item.modal) * qty;
+  penjualan.push({ id: uid(), produkId, namaProduk: item.nama, qty, hargaSatuan: item.jual, modalSatuan: item.modal, omzet, profit, tanggal: new Date().toISOString() });
+  saveAll();
+  closeKasirModal();
+  toast('Penjualan berhasil dicatat ✓');
+  renderAll();
+}
+
+/* ---------- PRODUK MODAL (Add/Edit) ---------- */
+function openProdukModal(mode, id) {
+  const form = document.getElementById('form-produk');
+  form.reset();
+  editingProdukId = null;
+  if (mode === 'edit') {
+    const p = produk.find(x => x.id === id);
+    if (!p) return;
+    editingProdukId = id;
+    document.getElementById('produk-modal-title').innerText = 'Edit Handuk';
+    document.getElementById('produk-submit-btn').innerText = 'Simpan Perubahan';
+    document.getElementById('prod-stok-label').innerText = 'Stok Saat Ini';
+    document.getElementById('prod-nama').value = p.nama;
+    document.getElementById('prod-modal').value = new Intl.NumberFormat('id-ID').format(p.modal);
+    document.getElementById('prod-jual').value = new Intl.NumberFormat('id-ID').format(p.jual);
+    document.getElementById('prod-stok').value = p.stok;
+  } else {
+    document.getElementById('produk-modal-title').innerText = 'Tambah Handuk Baru';
+    document.getElementById('produk-submit-btn').innerText = '+ Masukkan ke Daftar';
+    document.getElementById('prod-stok-label').innerText = 'Stok Awal';
+  }
+  document.getElementById('prod-margin-warning').classList.add('hidden');
+  document.getElementById('modal-produk').classList.remove('hidden');
+}
+function closeProdukModal() {
+  document.getElementById('modal-produk').classList.add('hidden');
+  editingProdukId = null;
+}
+function submitProduk(e) {
+  e.preventDefault();
+  const nama = document.getElementById('prod-nama').value.trim();
+  const modal = parseCurrency(document.getElementById('prod-modal').value);
+  const jual = parseCurrency(document.getElementById('prod-jual').value);
+  const stok = parseInt(document.getElementById('prod-stok').value, 10);
+
+  if (!nama) { toast('Nama handuk wajib diisi', 'error'); return; }
+
+  if (editingProdukId) {
+    const p = produk.find(x => x.id === editingProdukId);
+    p.nama = nama; p.modal = modal; p.jual = jual; p.stok = stok;
+    toast('Perubahan disimpan ✓');
+  } else {
+    produk.push({ id: uid(), nama, modal, jual, stok });
+    toast('Handuk baru ditambahkan ✓');
+  }
+  saveAll();
+  closeProdukModal();
+  renderAll();
+}
+function deleteProduk(id) {
+  const p = produk.find(x => x.id === id);
+  if (!p) return;
+  openConfirm('Hapus Handuk?', `"${p.nama}" akan dihapus dari daftar gudang. Riwayat transaksi yang sudah tercatat tidak akan berubah.`, () => {
+    produk = produk.filter(x => x.id !== id);
+    saveAll();
+    toast('Handuk dihapus');
+    renderAll();
+  });
+}
+
+/* ---------- RIWAYAT ---------- */
+function deleteTransaksi(id) {
+  const t = penjualan.find(x => x.id === id);
+  if (!t) return;
+  openConfirm('Hapus Transaksi?', `Transaksi "${t.namaProduk}" x${t.qty} akan dihapus dan stok akan dikembalikan otomatis.`, () => {
+    const item = produk.find(p => p.id === t.produkId);
+    if (item) item.stok += t.qty;
+    penjualan = penjualan.filter(x => x.id !== id);
+    saveAll();
+    toast('Transaksi dihapus & stok dikembalikan');
+    renderAll();
+  });
+}
+
+/* ---------- SETTINGS ---------- */
+function simpanNamaToko() {
+  const val = document.getElementById('setting-nama-toko').value.trim();
+  if (!val) { toast('Nama toko tidak boleh kosong', 'error'); return; }
+  settings.namaToko = val;
+  saveAll();
+  document.getElementById('toko-nama-label').innerText = val;
+  toast('Nama toko diperbarui ✓');
+}
+function exportData() {
+  const payload = { produk, penjualan, settings, exportedAt: new Date().toISOString() };
+  const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `backup-yanti-handuk-${new Date().toISOString().slice(0, 10)}.json`;
+  a.click();
+  URL.revokeObjectURL(url);
+  toast('Cadangan data diunduh ✓');
+}
+function importData(event) {
+  const file = event.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = () => {
+    try {
+      const data = JSON.parse(reader.result);
+      if (!Array.isArray(data.produk) || !Array.isArray(data.penjualan)) throw new Error('format');
+      openConfirm('Timpa Data Saat Ini?', 'Data gudang & riwayat yang ada sekarang akan diganti dengan isi file cadangan ini.', () => {
+        produk = data.produk;
+        penjualan = data.penjualan;
+        if (data.settings) settings = data.settings;
+        saveAll();
+        document.getElementById('toko-nama-label').innerText = settings.namaToko;
+        document.getElementById('setting-nama-toko').value = settings.namaToko;
+        toast('Data berhasil dipulihkan ✓');
+        renderAll();
+      }, 'Timpa Data');
+    } catch (err) {
+      toast('File cadangan tidak valid', 'error');
+    }
+  };
+  reader.readAsText(file);
+  event.target.value = '';
+}
+function confirmResetData() {
+  openConfirm('Reset Semua Data?', 'Seluruh data gudang dan riwayat transaksi akan dihapus permanen dan tidak bisa dikembalikan.', () => {
+    produk = [];
+    penjualan = [];
+    saveAll();
+    toast('Semua data telah direset');
+    renderAll();
+  }, 'Ya, Hapus Semua');
+}
+
+/* ---------- RENDER ---------- */
+function renderAll() {
+  renderDashboard();
+  renderGudang();
+  renderRiwayat();
+  document.getElementById('setting-nama-toko').value = settings.namaToko;
+  document.getElementById('toko-nama-label').innerText = settings.namaToko;
+}
+
+function renderDashboard() {
+  renderPeriodPills('dash-periode', dashPeriod, 'setDashPeriod');
+  const scoped = penjualan.filter(j => inPeriod(j.tanggal, dashPeriod));
+  const totalOmzet = scoped.reduce((s, j) => s + j.omzet, 0);
+  const totalProfit = scoped.reduce((s, j) => s + j.profit, 0);
+  const totalAset = produk.reduce((s, p) => s + p.modal * p.stok, 0);
+
+  document.getElementById('dash-omzet').innerText = formatRp(totalOmzet);
+  document.getElementById('dash-profit').innerText = formatRp(totalProfit);
+  document.getElementById('dash-trx').innerText = scoped.length;
+  document.getElementById('dash-aset').innerText = formatRp(totalAset);
+
+  const terlarisMap = {};
+  scoped.forEach(j => { terlarisMap[j.namaProduk] = (terlarisMap[j.namaProduk] || 0) + j.qty; });
+  const terlaris = Object.entries(terlarisMap).sort((a, b) => b[1] - a[1]).slice(0, 3);
+  const terlarisList = document.getElementById('terlaris-list');
+  terlarisList.innerHTML = terlaris.length ? terlaris.map(([nama, qty], i) => `
+    <li class="flex items-center justify-between py-1">
+      <div class="flex items-center gap-3">
+        <span class="w-6 h-6 rounded-full bg-teal-50 text-teal-700 text-xs font-bold flex items-center justify-center">${i + 1}</span>
+        <span class="font-semibold text-stone-900">${nama}</span>
+      </div>
+      <span class="text-stone-500 text-sm font-medium">${qty} terjual</span>
+    </li>`).join('') : '<li class="text-stone-400 font-medium text-sm text-center py-2">Belum ada penjualan pada periode ini.</li>';
+
+  const stokTipis = produk.filter(p => p.stok < 5);
+  const listTipis = document.getElementById('stok-tipis-list');
+  listTipis.innerHTML = stokTipis.length ? stokTipis.map(p => {
+    const s = stokStatus(p.stok);
+    return `
+    <li class="flex items-center justify-between py-1">
+      <div class="flex items-center gap-3">
+        <span class="w-2.5 h-2.5 rounded-full ${p.stok <= 0 ? 'bg-rose-500' : 'bg-amber-500'}"></span>
+        <span class="font-semibold text-stone-900 text-base">${p.nama}</span>
+      </div>
+      <span class="px-3 py-1 rounded-lg font-bold text-xs border ${s.cls}">${s.label} · ${p.stok}</span>
+    </li>`;
+  }).join('') : '<li class="text-stone-400 font-medium text-base text-center py-2">Semua stok aman terkendali.</li>';
+}
+
+function renderGudang() {
+  const term = (document.getElementById('gudang-search').value || '').toLowerCase().trim();
+  const filtered = produk.filter(p => p.nama.toLowerCase().includes(term));
+  const listProduk = document.getElementById('list-produk');
+  const emptyEl = document.getElementById('gudang-empty');
+
+  document.getElementById('gudang-aset').innerText = formatRp(produk.reduce((s, p) => s + p.modal * p.stok, 0));
+
+  if (produk.length === 0) {
+    listProduk.innerHTML = '';
+    emptyEl.classList.remove('hidden');
+  } else {
+    emptyEl.classList.add('hidden');
+    listProduk.innerHTML = filtered.map(p => {
+      const s = stokStatus(p.stok);
+      return `
+      <div class="bg-white p-4 rounded-2xl border border-stone-200 shadow-sm">
+        <div class="flex justify-between items-start gap-3">
+          <div class="min-w-0">
+            <h4 class="font-bold text-stone-900 text-base leading-tight truncate">${p.nama}</h4>
+            <div class="text-sm text-stone-500 mt-2 flex flex-col gap-0.5">
+              <span>Modal: ${formatRp(p.modal)}</span>
+              <span class="font-semibold text-stone-800">Jual: ${formatRp(p.jual)}</span>
+            </div>
+          </div>
+          <span class="px-3 py-1.5 rounded-xl font-bold text-xs border shrink-0 ${s.cls}">${s.label} · ${p.stok}</span>
+        </div>
+        <div class="flex gap-2 mt-4 pt-3 border-t border-stone-100">
+          <button onclick="openProdukModal('edit','${p.id}')" class="flex-1 bg-stone-100 text-stone-700 font-bold text-sm py-2.5 rounded-xl active:scale-95 transition-transform">Edit</button>
+          <button onclick="deleteProduk('${p.id}')" class="flex-1 bg-rose-50 text-rose-600 font-bold text-sm py-2.5 rounded-xl active:scale-95 transition-transform">Hapus</button>
+        </div>
+      </div>`;
+    }).join('') || '<p class="text-center text-stone-400 text-sm py-6">Tidak ada handuk yang cocok dengan pencarian.</p>';
+  }
+}
+
+function renderRiwayat() {
+  renderPeriodPills('riwayat-periode', riwayatPeriod, 'setRiwayatPeriod');
+  const scoped = penjualan.filter(j => inPeriod(j.tanggal, riwayatPeriod)).slice().sort((a, b) => new Date(b.tanggal) - new Date(a.tanggal));
+  const list = document.getElementById('list-riwayat');
+  const emptyEl = document.getElementById('riwayat-empty');
+
+  if (scoped.length === 0) {
+    list.innerHTML = '';
+    emptyEl.classList.remove('hidden');
+    return;
+  }
+  emptyEl.classList.add('hidden');
+  list.innerHTML = scoped.map(j => {
+    const tgl = new Date(j.tanggal);
+    const waktu = tgl.toLocaleDateString('id-ID', { day: 'numeric', month: 'short', year: 'numeric' }) + ' · ' + tgl.toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' });
+    return `
+    <div class="bg-white p-4 rounded-2xl border border-stone-200 shadow-sm">
+      <div class="flex justify-between items-start gap-3">
+        <div class="min-w-0">
+          <h4 class="font-bold text-stone-900 text-base truncate">${j.namaProduk}</h4>
+          <p class="text-xs text-stone-400 mt-1">${waktu}</p>
+          <p class="text-sm text-stone-500 mt-1">${j.qty} x ${formatRp(j.hargaSatuan)}</p>
+        </div>
+        <div class="text-right shrink-0">
+          <p class="font-bold text-stone-900">${formatRp(j.omzet)}</p>
+          <p class="text-xs text-teal-700 font-semibold mt-0.5">+${formatRp(j.profit)} profit</p>
+        </div>
+      </div>
+      <button onclick="deleteTransaksi('${j.id}')" class="w-full mt-3 pt-3 border-t border-stone-100 text-rose-600 font-bold text-sm active:scale-95 transition-transform">Batalkan Transaksi</button>
+    </div>`;
+  }).join('');
+}
+
+/* ---------- INIT ---------- */
+switchTab('dashboard');
+</script>
+</body>
+</html>
