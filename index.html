@@ -144,6 +144,17 @@
 
     <!-- ================= PENGATURAN ================= -->
     <div id="page-pengaturan" class="page-section hidden fade-in">
+      <div id="install-banner" class="hidden bg-teal-700 rounded-2xl p-4 mb-6 flex items-center gap-3 shadow-sm">
+        <div class="w-11 h-11 rounded-xl overflow-hidden shrink-0 bg-white/20">
+          <img src="icon-192.png" alt="Logo" class="w-full h-full object-cover">
+        </div>
+        <div class="flex-1 min-w-0">
+          <p class="font-bold text-white text-sm">Pasang Aplikasi Ini</p>
+          <p class="text-xs text-teal-100">Biar buka aplikasinya lebih gampang dari HP</p>
+        </div>
+        <button onclick="pasangAplikasi()" class="bg-white text-teal-700 font-bold text-sm px-4 py-2.5 rounded-xl active:scale-95 transition-transform shrink-0">Pasang</button>
+      </div>
+
       <h2 class="text-sm font-bold text-stone-400 mb-4 uppercase tracking-widest">Profil Toko</h2>
       <div class="bg-white p-5 rounded-2xl border border-stone-200 shadow-sm mb-6">
         <label class="block text-sm font-semibold text-stone-700 mb-2">Nama Toko</label>
@@ -873,8 +884,33 @@ function renderRiwayat() {
   }).join('');
 }
 
+/* ---------- PASANG APLIKASI (PWA install) ---------- */
+let deferredInstallPrompt = null;
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  deferredInstallPrompt = e;
+  document.getElementById('install-banner').classList.remove('hidden');
+});
+function pasangAplikasi() {
+  if (!deferredInstallPrompt) return;
+  deferredInstallPrompt.prompt();
+  deferredInstallPrompt.userChoice.finally(() => {
+    deferredInstallPrompt = null;
+    document.getElementById('install-banner').classList.add('hidden');
+  });
+}
+window.addEventListener('appinstalled', () => {
+  document.getElementById('install-banner').classList.add('hidden');
+});
+
 /* ---------- INIT ---------- */
 switchTab('dashboard');
+
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('sw.js').catch(() => {});
+  });
+}
 </script>
 </body>
 </html>
