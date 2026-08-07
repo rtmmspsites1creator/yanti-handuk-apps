@@ -36,158 +36,164 @@
 <div class="app-container w-full max-w-full sm:max-w-md bg-[#FFF8FA] relative shadow-none sm:shadow-2xl sm:rounded-[2rem] flex flex-col overflow-hidden">
 
   <!-- HEADER -->
-  <header class="bg-[#FFF8FA]/95 backdrop-blur px-5 pt-5 pb-4 border-b border-pink-100/70 flex items-center justify-between z-20 shrink-0">
+  <header class="bg-[#FFF8FA]/95 backdrop-blur px-6 pt-6 pb-5 border-b border-pink-100/70 flex items-center justify-between z-20 shrink-0">
     <div class="flex items-center gap-3 min-w-0">
-      <div class="w-11 h-11 rounded-2xl overflow-hidden shrink-0 border border-pink-100">
+      <div class="w-12 h-12 rounded-2xl overflow-hidden shrink-0 border border-pink-100">
         <img src="icon-192.png" alt="Logo Yanti Handuk" class="w-full h-full object-cover">
       </div>
       <div class="min-w-0">
-        <h1 class="text-lg font-bold text-stone-900 tracking-tight font-display truncate">Yanti Handuk Apps</h1>
-        <p class="text-xs text-stone-400 font-medium">Catatan Toko</p>
+        <h1 class="text-xl font-bold text-stone-900 tracking-tight font-display truncate">Yanti Handuk Apps</h1>
+        <p class="text-sm text-stone-400 font-medium">Catatan Toko</p>
       </div>
     </div>
-    <button onclick="switchTab('pengaturan')" class="w-10 h-10 rounded-full bg-white border border-stone-200 flex items-center justify-center active:scale-90 transition-transform shrink-0">
+    <button onclick="switchTab('pengaturan')" class="w-11 h-11 rounded-full bg-white border border-stone-200 flex items-center justify-center active:scale-90 transition-transform shrink-0">
       <svg class="w-5 h-5 text-stone-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
     </button>
   </header>
 
   <!-- MAIN -->
-  <main class="flex-1 overflow-y-auto p-5 pb-36">
+  <main class="flex-1 overflow-y-auto p-6 pb-36">
 
     <!-- ================= DASHBOARD ================= -->
     <div id="page-dashboard" class="page-section fade-in">
-      <div class="flex items-center justify-between mb-4">
-        <h2 class="text-sm font-bold text-stone-400 uppercase tracking-widest">Ringkasan Toko</h2>
+      <div class="flex items-center justify-between mb-5">
+        <h2 class="text-base font-bold text-stone-400 uppercase tracking-widest">Ringkasan Toko</h2>
       </div>
 
-      <div id="dash-periode" class="flex gap-2 mb-5 overflow-x-auto"></div>
+      <div id="dash-periode" class="flex gap-2 mb-6 overflow-x-auto"></div>
 
-      <div class="space-y-3 mb-6">
-        <div class="bg-white p-5 rounded-2xl border border-stone-200 shadow-sm flex items-center justify-between">
+      <div class="space-y-4 mb-8">
+        <div class="bg-white p-6 rounded-3xl border border-stone-200 shadow-sm flex items-center justify-between">
           <div>
-            <p class="text-sm text-stone-500 font-medium mb-1">Uang Masuk</p>
-            <p class="text-2xl font-bold text-stone-900 font-display" id="dash-omzet">Rp 0</p>
+            <p class="text-base text-stone-500 font-medium mb-1.5">Uang Masuk</p>
+            <p class="text-3xl font-bold text-stone-900 font-display" id="dash-omzet">Rp 0</p>
           </div>
-          <div class="bg-pink-50 p-3 rounded-full border border-pink-100">
-            <svg class="w-6 h-6 text-pink-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+          <div class="bg-pink-50 p-3.5 rounded-full border border-pink-100 shrink-0">
+            <svg class="w-7 h-7 text-pink-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
           </div>
         </div>
 
-        <div class="bg-gradient-to-br from-pink-500 to-fuchsia-700 p-5 rounded-2xl shadow-md flex items-center justify-between">
+        <div class="bg-gradient-to-br from-pink-500 to-fuchsia-700 p-6 rounded-3xl shadow-md flex items-center justify-between">
           <div>
-            <p class="text-sm text-pink-100 font-medium mb-1">Untung Bersih</p>
-            <p class="text-2xl font-bold text-white font-display" id="dash-profit">Rp 0</p>
+            <p class="text-base text-pink-100 font-medium mb-1.5">Untung Bersih</p>
+            <p class="text-3xl font-bold text-white font-display" id="dash-profit">Rp 0</p>
           </div>
-          <div class="bg-white/10 p-3 rounded-full">
-            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
+          <div class="bg-white/10 p-3.5 rounded-full shrink-0">
+            <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
           </div>
         </div>
 
-        <div class="grid grid-cols-2 gap-3">
-          <div class="bg-white p-4 rounded-2xl border border-stone-200 shadow-sm">
-            <p class="text-xs text-stone-500 font-medium mb-1">Kali Jual</p>
-            <p class="text-xl font-bold text-stone-900 font-display" id="dash-trx">0</p>
+        <div class="grid grid-cols-2 gap-4">
+          <div class="bg-white p-5 rounded-3xl border border-stone-200 shadow-sm">
+            <div class="bg-stone-50 w-10 h-10 rounded-full flex items-center justify-center mb-3">
+              <svg class="w-5 h-5 text-stone-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path></svg>
+            </div>
+            <p class="text-base text-stone-500 font-medium mb-1">Kali Jual</p>
+            <p class="text-2xl font-bold text-stone-900 font-display" id="dash-trx">0</p>
           </div>
-          <div class="bg-white p-4 rounded-2xl border border-stone-200 shadow-sm">
-            <p class="text-xs text-stone-500 font-medium mb-1">Nilai Barang di Gudang</p>
-            <p class="text-xl font-bold text-stone-900 font-display" id="dash-aset">Rp 0</p>
+          <div class="bg-white p-5 rounded-3xl border border-stone-200 shadow-sm">
+            <div class="bg-stone-50 w-10 h-10 rounded-full flex items-center justify-center mb-3">
+              <svg class="w-5 h-5 text-stone-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path></svg>
+            </div>
+            <p class="text-base text-stone-500 font-medium mb-1">Nilai Barang di Gudang</p>
+            <p class="text-2xl font-bold text-stone-900 font-display" id="dash-aset">Rp 0</p>
           </div>
         </div>
       </div>
 
-      <h2 class="text-sm font-bold text-stone-400 mb-3 uppercase tracking-widest">Barang Paling Laku</h2>
-      <div class="bg-white rounded-2xl border border-stone-200 p-5 shadow-sm mb-6">
-        <ul id="terlaris-list" class="space-y-3 text-base text-stone-800"></ul>
+      <h2 class="text-base font-bold text-stone-400 mb-4 uppercase tracking-widest">Barang Paling Laku</h2>
+      <div class="bg-white rounded-3xl border border-stone-200 p-6 shadow-sm mb-8">
+        <ul id="terlaris-list" class="divide-y divide-stone-100 text-lg text-stone-800"></ul>
       </div>
 
-      <h2 class="text-sm font-bold text-stone-400 mb-3 uppercase tracking-widest">Barang Mau Habis</h2>
-      <div class="bg-white rounded-2xl border border-stone-200 p-5 shadow-sm">
-        <ul id="stok-tipis-list" class="space-y-3 text-base text-stone-800"></ul>
+      <h2 class="text-base font-bold text-stone-400 mb-4 uppercase tracking-widest">Barang Mau Habis</h2>
+      <div class="bg-white rounded-3xl border border-stone-200 p-6 shadow-sm mb-6">
+        <ul id="stok-tipis-list" class="divide-y divide-stone-100 text-lg text-stone-800"></ul>
       </div>
     </div>
 
     <!-- ================= GUDANG ================= -->
     <div id="page-gudang" class="page-section hidden fade-in">
-      <div class="flex items-center justify-between mb-4">
-        <h2 class="text-sm font-bold text-stone-400 uppercase tracking-widest">Gudang</h2>
-        <button onclick="openProdukModal('add')" class="flex items-center gap-1.5 bg-pink-600 text-white text-sm font-bold px-4 py-2.5 rounded-xl active:scale-95 transition-transform">
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"></path></svg>
+      <div class="flex items-center justify-between mb-5">
+        <h2 class="text-base font-bold text-stone-400 uppercase tracking-widest">Gudang</h2>
+        <button onclick="openProdukModal('add')" class="flex items-center gap-1.5 bg-pink-600 text-white text-base font-bold px-4 py-3 rounded-xl active:scale-95 transition-transform">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"></path></svg>
           Tambah
         </button>
       </div>
 
-      <div class="relative mb-4">
+      <div class="relative mb-5">
         <svg class="w-5 h-5 text-stone-400 absolute left-4 top-1/2 -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35M17 10a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
-        <input id="gudang-search" oninput="renderGudang()" type="text" placeholder="Cari nama handuk..." class="w-full bg-white border border-stone-200 text-stone-900 text-base rounded-xl pl-11 pr-4 py-3.5 outline-none focus:border-pink-600 focus:ring-1 focus:ring-pink-600">
+        <input id="gudang-search" oninput="renderGudang()" type="text" placeholder="Cari nama handuk..." class="w-full bg-white border border-stone-200 text-stone-900 text-lg rounded-xl pl-11 pr-4 py-4 outline-none focus:border-pink-600 focus:ring-1 focus:ring-pink-600">
       </div>
 
-      <div class="bg-white rounded-2xl border border-stone-200 p-4 mb-5 flex items-center justify-between shadow-sm">
-        <span class="text-sm font-medium text-stone-500">Total Modal Barang</span>
-        <span class="text-base font-bold text-stone-900" id="gudang-aset">Rp 0</span>
+      <div class="bg-white rounded-2xl border border-stone-200 p-5 mb-6 flex items-center justify-between shadow-sm">
+        <span class="text-base font-medium text-stone-500">Total Modal Barang</span>
+        <span class="text-lg font-bold text-stone-900" id="gudang-aset">Rp 0</span>
       </div>
 
-      <div id="list-produk" class="space-y-3"></div>
-      <div id="gudang-empty" class="hidden text-center py-10">
-        <p class="text-stone-400 font-medium text-sm">Belum ada handuk terdaftar.<br>Tap "Tambah" untuk mulai isi gudang.</p>
+      <div id="list-produk" class="space-y-4"></div>
+      <div id="gudang-empty" class="hidden text-center py-12">
+        <p class="text-stone-400 font-medium text-base leading-relaxed">Belum ada handuk terdaftar.<br>Tap "Tambah" untuk mulai isi gudang.</p>
       </div>
     </div>
 
     <!-- ================= RIWAYAT ================= -->
     <div id="page-riwayat" class="page-section hidden fade-in">
-      <h2 class="text-sm font-bold text-stone-400 mb-4 uppercase tracking-widest">Riwayat Penjualan</h2>
-      <div id="riwayat-periode" class="flex gap-2 mb-4 overflow-x-auto"></div>
-      <div id="list-riwayat" class="space-y-3"></div>
-      <div id="riwayat-empty" class="hidden text-center py-10">
-        <p class="text-stone-400 font-medium text-sm">Belum ada transaksi pada periode ini.</p>
+      <h2 class="text-base font-bold text-stone-400 mb-5 uppercase tracking-widest">Riwayat Penjualan</h2>
+      <div id="riwayat-periode" class="flex gap-2 mb-5 overflow-x-auto"></div>
+      <div id="list-riwayat" class="space-y-4"></div>
+      <div id="riwayat-empty" class="hidden text-center py-12">
+        <p class="text-stone-400 font-medium text-base">Belum ada transaksi pada periode ini.</p>
       </div>
     </div>
 
     <!-- ================= PENGATURAN ================= -->
     <div id="page-pengaturan" class="page-section hidden fade-in">
-      <div id="install-banner" class="hidden bg-pink-600 rounded-2xl p-4 mb-6 flex items-center gap-3 shadow-sm">
-        <div class="w-11 h-11 rounded-xl overflow-hidden shrink-0 bg-white/20">
+      <div id="install-banner" class="hidden bg-pink-600 rounded-2xl p-5 mb-7 flex items-center gap-3 shadow-sm">
+        <div class="w-12 h-12 rounded-xl overflow-hidden shrink-0 bg-white/20">
           <img src="icon-192.png" alt="Logo" class="w-full h-full object-cover">
         </div>
         <div class="flex-1 min-w-0">
-          <p class="font-bold text-white text-sm">Pasang Aplikasi Ini</p>
-          <p class="text-xs text-pink-100">Biar buka aplikasinya lebih gampang dari HP</p>
+          <p class="font-bold text-white text-base">Pasang Aplikasi Ini</p>
+          <p class="text-sm text-pink-100">Biar buka aplikasinya lebih gampang dari HP</p>
         </div>
-        <button onclick="pasangAplikasi()" class="bg-white text-pink-600 font-bold text-sm px-4 py-2.5 rounded-xl active:scale-95 transition-transform shrink-0">Pasang</button>
+        <button onclick="pasangAplikasi()" class="bg-white text-pink-600 font-bold text-base px-4 py-3 rounded-xl active:scale-95 transition-transform shrink-0">Pasang</button>
       </div>
 
-      <h2 class="text-sm font-bold text-stone-400 mb-4 uppercase tracking-widest">Simpan & Pulihkan Data</h2>
-      <div class="bg-white rounded-2xl border border-stone-200 shadow-sm mb-6 divide-y divide-stone-100 overflow-hidden">
-        <button onclick="exportData()" class="w-full flex items-center gap-3 p-4 text-left active:bg-stone-50 transition-colors">
-          <div class="w-10 h-10 rounded-full bg-pink-50 flex items-center justify-center shrink-0">
+      <h2 class="text-base font-bold text-stone-400 mb-4 uppercase tracking-widest">Simpan & Pulihkan Data</h2>
+      <div class="bg-white rounded-2xl border border-stone-200 shadow-sm mb-7 divide-y divide-stone-100 overflow-hidden">
+        <button onclick="exportData()" class="w-full flex items-center gap-4 p-5 text-left active:bg-stone-50 transition-colors">
+          <div class="w-11 h-11 rounded-full bg-pink-50 flex items-center justify-center shrink-0">
             <svg class="w-5 h-5 text-pink-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 10l5 5 5-5M12 15V3"></path></svg>
           </div>
           <div class="flex-1">
-            <p class="font-bold text-stone-900 text-sm">Simpan Data ke File</p>
-            <p class="text-xs text-stone-500">Untuk jaga-jaga kalau HP hilang atau rusak</p>
+            <p class="font-bold text-stone-900 text-base">Simpan Data ke File</p>
+            <p class="text-sm text-stone-500 mt-0.5">Untuk jaga-jaga kalau HP hilang atau rusak</p>
           </div>
         </button>
-        <label class="w-full flex items-center gap-3 p-4 text-left active:bg-stone-50 transition-colors cursor-pointer">
-          <div class="w-10 h-10 rounded-full bg-pink-50 flex items-center justify-center shrink-0">
+        <label class="w-full flex items-center gap-4 p-5 text-left active:bg-stone-50 transition-colors cursor-pointer">
+          <div class="w-11 h-11 rounded-full bg-pink-50 flex items-center justify-center shrink-0">
             <svg class="w-5 h-5 text-pink-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M17 8l-5-5-5 5M12 3v12"></path></svg>
           </div>
           <div class="flex-1">
-            <p class="font-bold text-stone-900 text-sm">Kembalikan Data dari File</p>
-            <p class="text-xs text-stone-500">Pakai file yang pernah disimpan sebelumnya</p>
+            <p class="font-bold text-stone-900 text-base">Kembalikan Data dari File</p>
+            <p class="text-sm text-stone-500 mt-0.5">Pakai file yang pernah disimpan sebelumnya</p>
           </div>
           <input type="file" accept="application/json" class="hidden" onchange="importData(event)">
         </label>
-        <button onclick="confirmResetData()" class="w-full flex items-center gap-3 p-4 text-left active:bg-rose-50 transition-colors">
-          <div class="w-10 h-10 rounded-full bg-rose-50 flex items-center justify-center shrink-0">
+        <button onclick="confirmResetData()" class="w-full flex items-center gap-4 p-5 text-left active:bg-rose-50 transition-colors">
+          <div class="w-11 h-11 rounded-full bg-rose-50 flex items-center justify-center shrink-0">
             <svg class="w-5 h-5 text-rose-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6M9.5 4h5l.5 3h-6l.5-3z"></path></svg>
           </div>
           <div class="flex-1">
-            <p class="font-bold text-rose-600 text-sm">Hapus Semua Data</p>
-            <p class="text-xs text-stone-500">Semua data gudang dan riwayat penjualan akan hilang selamanya</p>
+            <p class="font-bold text-rose-600 text-base">Hapus Semua Data</p>
+            <p class="text-sm text-stone-500 mt-0.5">Semua data gudang dan riwayat penjualan akan hilang selamanya</p>
           </div>
         </button>
       </div>
 
-      <p class="text-center text-xs text-stone-400 pb-4">Yanti Handuk Apps · v2.0 · Data disimpan di HP ini saja</p>
+      <p class="text-center text-sm text-stone-400 pb-4">Yanti Handuk Apps · v2.0 · Data disimpan di HP ini saja</p>
     </div>
 
   </main>
@@ -196,29 +202,29 @@
   <nav class="bg-white border-t border-stone-200 flex justify-around items-center absolute bottom-0 w-full min-h-[5rem] px-1 shrink-0 z-20 safe-b">
     <button onclick="switchTab('dashboard')" id="nav-dashboard" class="nav-btn flex flex-col items-center w-1/5 p-2 text-stone-400 transition-colors">
       <svg class="w-6 h-6 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
-      <span class="text-[11px] font-bold">Ringkasan</span>
+      <span class="text-xs font-bold">Ringkasan</span>
     </button>
 
     <button onclick="switchTab('gudang')" id="nav-gudang" class="nav-btn flex flex-col items-center w-1/5 p-2 text-stone-400 transition-colors">
       <svg class="w-6 h-6 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path></svg>
-      <span class="text-[11px] font-bold">Gudang</span>
+      <span class="text-xs font-bold">Gudang</span>
     </button>
 
     <button onclick="openKasirModal()" class="flex flex-col items-center w-1/5 p-2 text-stone-400">
       <div class="bg-pink-600 text-white p-4 rounded-full -mt-10 shadow-lg border-[5px] border-white active:scale-95 transition-transform">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
       </div>
-      <span class="text-[11px] font-bold mt-1">Kasir</span>
+      <span class="text-xs font-bold mt-1">Kasir</span>
     </button>
 
     <button onclick="switchTab('riwayat')" id="nav-riwayat" class="nav-btn flex flex-col items-center w-1/5 p-2 text-stone-400 transition-colors">
       <svg class="w-6 h-6 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-      <span class="text-[11px] font-bold">Riwayat</span>
+      <span class="text-xs font-bold">Riwayat</span>
     </button>
 
     <button onclick="switchTab('pengaturan')" id="nav-pengaturan" class="nav-btn flex flex-col items-center w-1/5 p-2 text-stone-400 transition-colors">
       <svg class="w-6 h-6 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
-      <span class="text-[11px] font-bold">Setelan</span>
+      <span class="text-xs font-bold">Setelan</span>
     </button>
   </nav>
 
@@ -230,32 +236,32 @@
     <div class="absolute inset-0 bg-stone-900/40" onclick="closeKasirModal()"></div>
     <div class="absolute bottom-0 left-0 right-0 bg-white rounded-t-3xl p-6 sheet-in safe-b max-h-[85%] overflow-y-auto">
       <div class="w-10 h-1.5 bg-stone-200 rounded-full mx-auto mb-5"></div>
-      <h2 class="text-lg font-bold text-stone-900 font-display mb-5">Catat Penjualan</h2>
+      <h2 class="text-xl font-bold text-stone-900 font-display mb-5">Catat Penjualan</h2>
       <form id="form-penjualan" onsubmit="catatPenjualan(event)">
         <div class="space-y-5 mb-2">
           <div>
-            <label class="block text-sm font-semibold text-stone-700 mb-2">Pilih Barang</label>
-            <select id="jual-produk" required onchange="updateKasirPreview()" class="w-full bg-white border border-stone-300 text-stone-900 text-base rounded-xl block p-4 outline-none focus:border-pink-600 focus:ring-1 focus:ring-pink-600"></select>
+            <label class="block text-base font-semibold text-stone-700 mb-2">Pilih Barang</label>
+            <select id="jual-produk" required onchange="updateKasirPreview()" class="w-full bg-white border border-stone-300 text-stone-900 text-lg rounded-xl block p-4 outline-none focus:border-pink-600 focus:ring-1 focus:ring-pink-600"></select>
           </div>
           <div>
-            <label class="block text-sm font-semibold text-stone-700 mb-2">Jumlah Barang</label>
+            <label class="block text-base font-semibold text-stone-700 mb-2">Jumlah Barang</label>
             <div class="flex items-center gap-3">
-              <button type="button" onclick="stepQty(-1)" class="w-12 h-12 rounded-xl bg-stone-100 text-stone-700 font-bold text-xl active:scale-90 transition-transform shrink-0">−</button>
-              <input type="number" id="jual-qty" required min="1" oninput="updateKasirPreview()" class="w-full text-center bg-white border border-stone-300 text-stone-900 text-base rounded-xl p-4 outline-none focus:border-pink-600 focus:ring-1 focus:ring-pink-600" value="1">
-              <button type="button" onclick="stepQty(1)" class="w-12 h-12 rounded-xl bg-stone-100 text-stone-700 font-bold text-xl active:scale-90 transition-transform shrink-0">+</button>
+              <button type="button" onclick="stepQty(-1)" class="w-12 h-12 rounded-xl bg-stone-100 text-stone-700 font-bold text-2xl active:scale-90 transition-transform shrink-0">−</button>
+              <input type="number" id="jual-qty" required min="1" oninput="updateKasirPreview()" class="w-full text-center bg-white border border-stone-300 text-stone-900 text-lg rounded-xl p-4 outline-none focus:border-pink-600 focus:ring-1 focus:ring-pink-600" value="1">
+              <button type="button" onclick="stepQty(1)" class="w-12 h-12 rounded-xl bg-stone-100 text-stone-700 font-bold text-2xl active:scale-90 transition-transform shrink-0">+</button>
             </div>
-            <p class="text-xs text-stone-400 mt-2" id="jual-stok-info">Stok tersedia: -</p>
+            <p class="text-sm text-stone-400 mt-2" id="jual-stok-info">Stok tersedia: -</p>
           </div>
         </div>
 
         <div id="kasir-preview" class="bg-pink-50 border border-pink-100 rounded-2xl p-4 my-5 space-y-2 hidden">
-          <div class="flex justify-between text-sm"><span class="text-stone-500">Total Harga</span><span class="font-bold text-stone-900" id="kasir-subtotal">Rp 0</span></div>
-          <div class="flex justify-between text-sm"><span class="text-stone-500">Perkiraan Untung</span><span class="font-bold text-pink-600" id="kasir-profit">Rp 0</span></div>
-          <div class="flex justify-between text-sm"><span class="text-stone-500">Sisa Stok</span><span class="font-bold text-stone-900" id="kasir-sisa">0</span></div>
+          <div class="flex justify-between text-base"><span class="text-stone-500">Total Harga</span><span class="font-bold text-stone-900" id="kasir-subtotal">Rp 0</span></div>
+          <div class="flex justify-between text-base"><span class="text-stone-500">Perkiraan Untung</span><span class="font-bold text-pink-600" id="kasir-profit">Rp 0</span></div>
+          <div class="flex justify-between text-base"><span class="text-stone-500">Sisa Stok</span><span class="font-bold text-stone-900" id="kasir-sisa">0</span></div>
         </div>
-        <p id="kasir-error" class="hidden text-sm text-rose-600 font-semibold bg-rose-50 border border-rose-200 rounded-xl p-3 mb-5 text-center"></p>
+        <p id="kasir-error" class="hidden text-base text-rose-600 font-semibold bg-rose-50 border border-rose-200 rounded-xl p-3 mb-5 text-center"></p>
 
-        <button type="submit" id="kasir-submit-btn" class="w-full bg-pink-600 text-white font-bold text-lg py-4 rounded-xl active:scale-95 transition-transform disabled:opacity-40 disabled:active:scale-100">
+        <button type="submit" id="kasir-submit-btn" class="w-full bg-pink-600 text-white font-bold text-xl py-4 rounded-xl active:scale-95 transition-transform disabled:opacity-40 disabled:active:scale-100">
           Simpan Penjualan
         </button>
       </form>
@@ -267,30 +273,30 @@
     <div class="absolute inset-0 bg-stone-900/40" onclick="closeProdukModal()"></div>
     <div class="absolute bottom-0 left-0 right-0 bg-white rounded-t-3xl p-6 sheet-in safe-b max-h-[90%] overflow-y-auto">
       <div class="w-10 h-1.5 bg-stone-200 rounded-full mx-auto mb-5"></div>
-      <h2 id="produk-modal-title" class="text-lg font-bold text-stone-900 font-display mb-5">Tambah Handuk Baru</h2>
+      <h2 id="produk-modal-title" class="text-xl font-bold text-stone-900 font-display mb-5">Tambah Handuk Baru</h2>
       <form id="form-produk" onsubmit="submitProduk(event)" class="space-y-4">
         <input type="hidden" id="prod-id">
         <div>
-          <label class="block text-sm font-semibold text-stone-700 mb-2">Nama Handuk</label>
-          <input type="text" id="prod-nama" required class="w-full bg-white border border-stone-300 rounded-xl p-4 text-base outline-none focus:border-pink-600 focus:ring-1 focus:ring-pink-600" placeholder="Ketik nama...">
+          <label class="block text-base font-semibold text-stone-700 mb-2">Nama Handuk</label>
+          <input type="text" id="prod-nama" required class="w-full bg-white border border-stone-300 rounded-xl p-4 text-lg outline-none focus:border-pink-600 focus:ring-1 focus:ring-pink-600" placeholder="Ketik nama...">
         </div>
         <div class="grid grid-cols-2 gap-4">
           <div>
-            <label class="block text-sm font-semibold text-stone-700 mb-2">Harga Beli</label>
-            <input type="text" inputmode="numeric" id="prod-modal" required class="w-full bg-white border border-stone-300 rounded-xl p-4 text-base outline-none focus:border-pink-600 focus:ring-1 focus:ring-pink-600" placeholder="Rp">
+            <label class="block text-base font-semibold text-stone-700 mb-2">Harga Beli</label>
+            <input type="text" inputmode="numeric" id="prod-modal" required class="w-full bg-white border border-stone-300 rounded-xl p-4 text-lg outline-none focus:border-pink-600 focus:ring-1 focus:ring-pink-600" placeholder="Rp">
           </div>
           <div>
-            <label class="block text-sm font-semibold text-stone-700 mb-2">Harga Jual</label>
-            <input type="text" inputmode="numeric" id="prod-jual" required class="w-full bg-white border border-stone-300 rounded-xl p-4 text-base outline-none focus:border-pink-600 focus:ring-1 focus:ring-pink-600" placeholder="Rp">
+            <label class="block text-base font-semibold text-stone-700 mb-2">Harga Jual</label>
+            <input type="text" inputmode="numeric" id="prod-jual" required class="w-full bg-white border border-stone-300 rounded-xl p-4 text-lg outline-none focus:border-pink-600 focus:ring-1 focus:ring-pink-600" placeholder="Rp">
           </div>
         </div>
-        <p id="prod-margin-warning" class="hidden text-xs text-amber-600 font-semibold bg-amber-50 border border-amber-200 rounded-xl p-3">⚠ Harga jual tidak lebih besar dari harga beli — cek kembali sebelum disimpan.</p>
+        <p id="prod-margin-warning" class="hidden text-sm text-amber-600 font-semibold bg-amber-50 border border-amber-200 rounded-xl p-3">⚠ Harga jual tidak lebih besar dari harga beli — cek kembali sebelum disimpan.</p>
         <div>
-          <label id="prod-stok-label" class="block text-sm font-semibold text-stone-700 mb-2">Stok Awal</label>
-          <input type="number" id="prod-stok" required min="0" class="w-full bg-white border border-stone-300 rounded-xl p-4 text-base outline-none focus:border-pink-600 focus:ring-1 focus:ring-pink-600" placeholder="Jumlah stok">
-          <p class="text-xs text-stone-400 mt-2" id="prod-stok-hint">Kalau baru belanja stok, tutup ini dan pakai tombol "+ Stok" di halaman Gudang saja.</p>
+          <label id="prod-stok-label" class="block text-base font-semibold text-stone-700 mb-2">Stok Awal</label>
+          <input type="number" id="prod-stok" required min="0" class="w-full bg-white border border-stone-300 rounded-xl p-4 text-lg outline-none focus:border-pink-600 focus:ring-1 focus:ring-pink-600" placeholder="Jumlah stok">
+          <p class="text-sm text-stone-400 mt-2" id="prod-stok-hint">Kalau baru belanja stok, tutup ini dan pakai tombol "+ Stok" di halaman Gudang saja.</p>
         </div>
-        <button type="submit" class="w-full bg-pink-600 text-white font-bold text-base py-4 mt-2 rounded-xl active:scale-95 transition-transform" id="produk-submit-btn">
+        <button type="submit" class="w-full bg-pink-600 text-white font-bold text-lg py-4 mt-2 rounded-xl active:scale-95 transition-transform" id="produk-submit-btn">
           + Masukkan ke Daftar
         </button>
       </form>
@@ -302,24 +308,24 @@
     <div class="absolute inset-0 bg-stone-900/40" onclick="closeRestockModal()"></div>
     <div class="absolute bottom-0 left-0 right-0 bg-white rounded-t-3xl p-6 sheet-in safe-b max-h-[85%] overflow-y-auto">
       <div class="w-10 h-1.5 bg-stone-200 rounded-full mx-auto mb-5"></div>
-      <h2 class="text-lg font-bold text-stone-900 font-display mb-1">Tambah Stok</h2>
-      <p class="text-sm text-stone-500 mb-5" id="restock-nama">Nama Handuk</p>
+      <h2 class="text-xl font-bold text-stone-900 font-display mb-1">Tambah Stok</h2>
+      <p class="text-base text-stone-500 mb-5" id="restock-nama">Nama Handuk</p>
       <form id="form-restock" onsubmit="submitRestock(event)">
         <div class="bg-stone-50 border border-stone-200 rounded-2xl p-4 mb-5 flex items-center justify-between">
-          <span class="text-sm font-medium text-stone-500">Stok Sekarang</span>
-          <span class="text-base font-bold text-stone-900" id="restock-stok-lama">0</span>
+          <span class="text-base font-medium text-stone-500">Stok Sekarang</span>
+          <span class="text-lg font-bold text-stone-900" id="restock-stok-lama">0</span>
         </div>
-        <label class="block text-sm font-semibold text-stone-700 mb-2">Belanja Berapa Banyak?</label>
+        <label class="block text-base font-semibold text-stone-700 mb-2">Belanja Berapa Banyak?</label>
         <div class="flex items-center gap-3 mb-5">
-          <button type="button" onclick="stepRestock(-1)" class="w-12 h-12 rounded-xl bg-stone-100 text-stone-700 font-bold text-xl active:scale-90 transition-transform shrink-0">−</button>
-          <input type="number" id="restock-jumlah" required min="1" oninput="updateRestockPreview()" class="w-full text-center bg-white border border-stone-300 text-stone-900 text-base rounded-xl p-4 outline-none focus:border-pink-600 focus:ring-1 focus:ring-pink-600" value="1">
-          <button type="button" onclick="stepRestock(1)" class="w-12 h-12 rounded-xl bg-stone-100 text-stone-700 font-bold text-xl active:scale-90 transition-transform shrink-0">+</button>
+          <button type="button" onclick="stepRestock(-1)" class="w-12 h-12 rounded-xl bg-stone-100 text-stone-700 font-bold text-2xl active:scale-90 transition-transform shrink-0">−</button>
+          <input type="number" id="restock-jumlah" required min="1" oninput="updateRestockPreview()" class="w-full text-center bg-white border border-stone-300 text-stone-900 text-lg rounded-xl p-4 outline-none focus:border-pink-600 focus:ring-1 focus:ring-pink-600" value="1">
+          <button type="button" onclick="stepRestock(1)" class="w-12 h-12 rounded-xl bg-stone-100 text-stone-700 font-bold text-2xl active:scale-90 transition-transform shrink-0">+</button>
         </div>
         <div class="bg-pink-50 border border-pink-100 rounded-2xl p-4 mb-5 flex items-center justify-between">
-          <span class="text-sm text-stone-500">Stok Jadi</span>
-          <span class="font-bold text-pink-600 text-lg" id="restock-stok-baru">0</span>
+          <span class="text-base text-stone-500">Stok Jadi</span>
+          <span class="font-bold text-pink-600 text-xl" id="restock-stok-baru">0</span>
         </div>
-        <button type="submit" class="w-full bg-pink-600 text-white font-bold text-lg py-4 rounded-xl active:scale-95 transition-transform">
+        <button type="submit" class="w-full bg-pink-600 text-white font-bold text-xl py-4 rounded-xl active:scale-95 transition-transform">
           Simpan Stok Baru
         </button>
       </form>
@@ -330,8 +336,8 @@
   <div id="modal-confirm" class="hidden absolute inset-0 z-50 flex items-center justify-center px-6">
     <div class="absolute inset-0 bg-stone-900/50" onclick="closeConfirm()"></div>
     <div class="relative bg-white rounded-3xl p-6 w-full pop-in">
-      <h3 id="confirm-title" class="text-lg font-bold text-stone-900 font-display mb-2">Yakin?</h3>
-      <p id="confirm-desc" class="text-sm text-stone-500 mb-6">Deskripsi konfirmasi.</p>
+      <h3 id="confirm-title" class="text-xl font-bold text-stone-900 font-display mb-2">Yakin?</h3>
+      <p id="confirm-desc" class="text-base text-stone-500 mb-6">Deskripsi konfirmasi.</p>
       <div class="flex gap-3">
         <button onclick="closeConfirm()" class="flex-1 bg-stone-100 text-stone-700 font-bold py-3.5 rounded-xl active:scale-95 transition-transform">Batal</button>
         <button id="confirm-action-btn" class="flex-1 bg-rose-600 text-white font-bold py-3.5 rounded-xl active:scale-95 transition-transform">Hapus</button>
@@ -399,7 +405,7 @@ function toast(message, type = 'success') {
     info: 'bg-pink-600 text-white'
   };
   const el = document.createElement('div');
-  el.className = `toast-in ${colors[type]} px-5 py-3 rounded-xl shadow-lg text-sm font-bold pointer-events-auto max-w-full text-center`;
+  el.className = `toast-in ${colors[type]} px-5 py-3 rounded-xl shadow-lg text-base font-bold pointer-events-auto max-w-full text-center`;
   el.innerText = message;
   wrap.appendChild(el);
   setTimeout(() => { el.style.opacity = '0'; el.style.transition = 'opacity .25s'; setTimeout(() => el.remove(), 250); }, 2200);
@@ -466,7 +472,7 @@ const PERIODS = [
 function renderPeriodPills(containerId, current, setter) {
   const wrap = document.getElementById(containerId);
   wrap.innerHTML = PERIODS.map(p => `
-    <button onclick="${setter}('${p.id}')" class="px-4 py-2 rounded-full text-sm font-bold whitespace-nowrap transition-colors ${p.id === current ? 'bg-pink-600 text-white' : 'bg-white text-stone-500 border border-stone-200'}">${p.label}</button>
+    <button onclick="${setter}('${p.id}')" class="px-5 py-2.5 rounded-full text-base font-bold whitespace-nowrap transition-colors ${p.id === current ? 'bg-pink-600 text-white' : 'bg-white text-stone-500 border border-stone-200'}">${p.label}</button>
   `).join('');
 }
 function setDashPeriod(p) { dashPeriod = p; renderAll(); }
@@ -749,30 +755,30 @@ function renderDashboard() {
   const terlaris = Object.entries(terlarisMap).sort((a, b) => b[1] - a[1]).slice(0, 3);
   const terlarisList = document.getElementById('terlaris-list');
   terlarisList.innerHTML = terlaris.length ? terlaris.map(([nama, qty], i) => `
-    <li class="flex items-center justify-between py-1">
-      <div class="flex items-center gap-3">
-        <span class="w-6 h-6 rounded-full bg-pink-50 text-pink-600 text-xs font-bold flex items-center justify-center">${i + 1}</span>
-        <span class="font-semibold text-stone-900">${nama}</span>
+    <li class="flex items-center justify-between py-3.5 first:pt-0 last:pb-0">
+      <div class="flex items-center gap-3 min-w-0">
+        <span class="w-8 h-8 rounded-full bg-pink-50 text-pink-600 text-base font-bold flex items-center justify-center shrink-0">${i + 1}</span>
+        <span class="font-semibold text-stone-900 truncate">${nama}</span>
       </div>
-      <span class="text-stone-500 text-sm font-medium">${qty} terjual</span>
-    </li>`).join('') : '<li class="text-stone-400 font-medium text-sm text-center py-2">Belum ada penjualan pada periode ini.</li>';
+      <span class="text-stone-500 text-base font-medium shrink-0">${qty} terjual</span>
+    </li>`).join('') : '<li class="text-stone-400 font-medium text-base text-center py-4">Belum ada penjualan pada periode ini.</li>';
 
   const stokTipis = produk.filter(p => p.stok < 5);
   const listTipis = document.getElementById('stok-tipis-list');
   listTipis.innerHTML = stokTipis.length ? stokTipis.map(p => {
     const s = stokStatus(p.stok);
     return `
-    <li class="flex items-center justify-between py-1">
+    <li class="flex items-center justify-between py-3.5 first:pt-0 last:pb-0">
       <div class="flex items-center gap-3 min-w-0">
-        <span class="w-2.5 h-2.5 rounded-full shrink-0 ${p.stok <= 0 ? 'bg-rose-500' : 'bg-amber-500'}"></span>
+        <span class="w-3 h-3 rounded-full shrink-0 ${p.stok <= 0 ? 'bg-rose-500' : 'bg-amber-500'}"></span>
         <div class="min-w-0">
-          <span class="font-semibold text-stone-900 text-base block truncate">${p.nama}</span>
-          <span class="text-xs text-stone-400">Terakhir belanja: ${formatTanggalRestock(p.restockTerakhir)}</span>
+          <span class="font-semibold text-stone-900 text-lg block truncate">${p.nama}</span>
+          <span class="text-sm text-stone-400">Terakhir belanja: ${formatTanggalRestock(p.restockTerakhir)}</span>
         </div>
       </div>
-      <span class="px-3 py-1 rounded-lg font-bold text-xs border shrink-0 ${s.cls}">${s.label} · ${p.stok}</span>
+      <span class="px-3 py-1.5 rounded-lg font-bold text-sm border shrink-0 ${s.cls}">${s.label} · ${p.stok}</span>
     </li>`;
-  }).join('') : '<li class="text-stone-400 font-medium text-base text-center py-2">Semua stok masih aman.</li>';
+  }).join('') : '<li class="text-stone-400 font-medium text-lg text-center py-4">Semua stok masih aman.</li>';
 }
 
 function renderGudang() {
@@ -791,25 +797,25 @@ function renderGudang() {
     listProduk.innerHTML = filtered.map(p => {
       const s = stokStatus(p.stok);
       return `
-      <div class="bg-white p-4 rounded-2xl border border-stone-200 shadow-sm">
+      <div class="bg-white p-5 rounded-2xl border border-stone-200 shadow-sm">
         <div class="flex justify-between items-start gap-3">
           <div class="min-w-0">
-            <h4 class="font-bold text-stone-900 text-base leading-tight truncate">${p.nama}</h4>
-            <div class="text-sm text-stone-500 mt-2 flex flex-col gap-0.5">
+            <h4 class="font-bold text-stone-900 text-lg leading-tight truncate">${p.nama}</h4>
+            <div class="text-base text-stone-500 mt-2.5 flex flex-col gap-1">
               <span>Harga Beli: ${formatRp(p.modal)}</span>
               <span class="font-semibold text-stone-800">Harga Jual: ${formatRp(p.jual)}</span>
             </div>
-            <p class="text-xs text-stone-400 mt-2">Terakhir belanja: ${formatTanggalRestock(p.restockTerakhir)}</p>
+            <p class="text-sm text-stone-400 mt-2.5">Terakhir belanja: ${formatTanggalRestock(p.restockTerakhir)}</p>
           </div>
-          <span class="px-3 py-1.5 rounded-xl font-bold text-xs border shrink-0 ${s.cls}">${s.label} · ${p.stok}</span>
+          <span class="px-3 py-1.5 rounded-xl font-bold text-sm border shrink-0 ${s.cls}">${s.label} · ${p.stok}</span>
         </div>
-        <div class="flex gap-2 mt-4 pt-3 border-t border-stone-100">
-          <button onclick="openRestockModal('${p.id}')" class="flex-1 bg-pink-50 text-pink-600 font-bold text-sm py-2.5 rounded-xl active:scale-95 transition-transform">+ Stok</button>
-          <button onclick="openProdukModal('edit','${p.id}')" class="flex-1 bg-stone-100 text-stone-700 font-bold text-sm py-2.5 rounded-xl active:scale-95 transition-transform">Edit</button>
-          <button onclick="deleteProduk('${p.id}')" class="flex-1 bg-rose-50 text-rose-600 font-bold text-sm py-2.5 rounded-xl active:scale-95 transition-transform">Hapus</button>
+        <div class="flex gap-2 mt-5 pt-4 border-t border-stone-100">
+          <button onclick="openRestockModal('${p.id}')" class="flex-1 bg-pink-50 text-pink-600 font-bold text-base py-3 rounded-xl active:scale-95 transition-transform">+ Stok</button>
+          <button onclick="openProdukModal('edit','${p.id}')" class="flex-1 bg-stone-100 text-stone-700 font-bold text-base py-3 rounded-xl active:scale-95 transition-transform">Edit</button>
+          <button onclick="deleteProduk('${p.id}')" class="flex-1 bg-rose-50 text-rose-600 font-bold text-base py-3 rounded-xl active:scale-95 transition-transform">Hapus</button>
         </div>
       </div>`;
-    }).join('') || '<p class="text-center text-stone-400 text-sm py-6">Tidak ada handuk yang cocok dengan pencarian.</p>';
+    }).join('') || '<p class="text-center text-stone-400 text-base py-8">Tidak ada handuk yang cocok dengan pencarian.</p>';
   }
 }
 
@@ -829,19 +835,19 @@ function renderRiwayat() {
     const tgl = new Date(j.tanggal);
     const waktu = tgl.toLocaleDateString('id-ID', { day: 'numeric', month: 'short', year: 'numeric' }) + ' · ' + tgl.toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' });
     return `
-    <div class="bg-white p-4 rounded-2xl border border-stone-200 shadow-sm">
+    <div class="bg-white p-5 rounded-2xl border border-stone-200 shadow-sm">
       <div class="flex justify-between items-start gap-3">
         <div class="min-w-0">
-          <h4 class="font-bold text-stone-900 text-base truncate">${j.namaProduk}</h4>
-          <p class="text-xs text-stone-400 mt-1">${waktu}</p>
-          <p class="text-sm text-stone-500 mt-1">${j.qty} x ${formatRp(j.hargaSatuan)}</p>
+          <h4 class="font-bold text-stone-900 text-lg truncate">${j.namaProduk}</h4>
+          <p class="text-sm text-stone-400 mt-1.5">${waktu}</p>
+          <p class="text-base text-stone-500 mt-1.5">${j.qty} x ${formatRp(j.hargaSatuan)}</p>
         </div>
         <div class="text-right shrink-0">
-          <p class="font-bold text-stone-900">${formatRp(j.omzet)}</p>
-          <p class="text-xs text-pink-600 font-semibold mt-0.5">+${formatRp(j.profit)} profit</p>
+          <p class="font-bold text-stone-900 text-lg">${formatRp(j.omzet)}</p>
+          <p class="text-sm text-pink-600 font-semibold mt-1">+${formatRp(j.profit)} profit</p>
         </div>
       </div>
-      <button onclick="deleteTransaksi('${j.id}')" class="w-full mt-3 pt-3 border-t border-stone-100 text-rose-600 font-bold text-sm active:scale-95 transition-transform">Batalkan Transaksi</button>
+      <button onclick="deleteTransaksi('${j.id}')" class="w-full mt-4 pt-4 border-t border-stone-100 text-rose-600 font-bold text-base active:scale-95 transition-transform">Batalkan Transaksi</button>
     </div>`;
   }).join('');
 }
