@@ -8,14 +8,14 @@
 <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#db2777">
+<meta name="theme-color" content="#0c4a6e">
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
 <style>
-  body { font-family: 'Inter', sans-serif; background-color: #fce7f3; }
+  body { font-family: 'Inter', sans-serif; background-color: #e0f2fe; }
   .font-display { font-family: 'Plus Jakarta Sans', sans-serif; }
   ::-webkit-scrollbar { display: none; }
   .app-container { height: 100vh; height: 100dvh; }
@@ -31,14 +31,14 @@
   .safe-b { padding-bottom: env(safe-area-inset-bottom); }
 </style>
 </head>
-<body class="flex justify-center items-center h-screen overflow-hidden bg-pink-100 sm:p-6">
+<body class="flex justify-center items-center h-screen overflow-hidden bg-sky-100 sm:p-6">
 
-<div class="app-container w-full max-w-full sm:max-w-md bg-[#FFF8FA] relative shadow-none sm:shadow-2xl sm:rounded-[2rem] flex flex-col overflow-hidden">
+<div class="app-container w-full max-w-full sm:max-w-md bg-[#F6FAFD] relative shadow-none sm:shadow-2xl sm:rounded-[2rem] flex flex-col overflow-hidden">
 
   <!-- HEADER -->
-  <header class="bg-[#FFF8FA]/95 backdrop-blur px-6 pt-6 pb-5 border-b border-pink-100/70 flex items-center justify-between z-20 shrink-0">
+  <header class="bg-[#F6FAFD]/95 backdrop-blur px-6 pt-6 pb-5 border-b border-sky-100/70 flex items-center justify-between z-20 shrink-0">
     <div class="flex items-center gap-3 min-w-0">
-      <div class="w-12 h-12 rounded-2xl overflow-hidden shrink-0 border border-pink-100">
+      <div class="w-12 h-12 rounded-2xl overflow-hidden shrink-0 border border-sky-100">
         <img src="icon-192.png" alt="Logo Yanti Handuk" class="w-full h-full object-cover">
       </div>
       <div class="min-w-0">
@@ -68,14 +68,14 @@
             <p class="text-base text-stone-500 font-medium mb-1.5">Uang Masuk</p>
             <p class="text-3xl font-bold text-stone-900 font-display" id="dash-omzet">Rp 0</p>
           </div>
-          <div class="bg-pink-50 p-3.5 rounded-full border border-pink-100 shrink-0">
-            <svg class="w-7 h-7 text-pink-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+          <div class="bg-sky-50 p-3.5 rounded-full border border-sky-100 shrink-0">
+            <svg class="w-7 h-7 text-sky-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
           </div>
         </div>
 
-        <div class="bg-gradient-to-br from-pink-500 to-fuchsia-700 p-6 rounded-3xl shadow-md flex items-center justify-between">
+        <div class="bg-gradient-to-br from-sky-600 to-blue-800 p-6 rounded-3xl shadow-md flex items-center justify-between">
           <div>
-            <p class="text-base text-pink-100 font-medium mb-1.5">Untung Bersih</p>
+            <p class="text-base text-sky-100 font-medium mb-1.5">Untung Bersih</p>
             <p class="text-3xl font-bold text-white font-display" id="dash-profit">Rp 0</p>
           </div>
           <div class="bg-white/10 p-3.5 rounded-full shrink-0">
@@ -116,7 +116,7 @@
     <div id="page-gudang" class="page-section hidden fade-in">
       <div class="flex items-center justify-between mb-5">
         <h2 class="text-base font-bold text-stone-400 uppercase tracking-widest">Gudang</h2>
-        <button onclick="openProdukModal('add')" class="flex items-center gap-1.5 bg-pink-600 text-white text-base font-bold px-4 py-3 rounded-xl active:scale-95 transition-transform">
+        <button onclick="openProdukModal('add')" class="flex items-center gap-1.5 bg-sky-700 text-white text-base font-bold px-4 py-3 rounded-xl active:scale-95 transition-transform">
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"></path></svg>
           Tambah
         </button>
@@ -124,7 +124,7 @@
 
       <div class="relative mb-5">
         <svg class="w-5 h-5 text-stone-400 absolute left-4 top-1/2 -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35M17 10a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
-        <input id="gudang-search" oninput="renderGudang()" type="text" placeholder="Cari nama handuk..." class="w-full bg-white border border-stone-200 text-stone-900 text-lg rounded-xl pl-11 pr-4 py-4 outline-none focus:border-pink-600 focus:ring-1 focus:ring-pink-600">
+        <input id="gudang-search" oninput="renderGudang()" type="text" placeholder="Cari nama handuk..." class="w-full bg-white border border-stone-200 text-stone-900 text-lg rounded-xl pl-11 pr-4 py-4 outline-none focus:border-sky-700 focus:ring-1 focus:ring-sky-700">
       </div>
 
       <div class="bg-white rounded-2xl border border-stone-200 p-5 mb-6 flex items-center justify-between shadow-sm">
@@ -140,32 +140,41 @@
 
     <!-- ================= RIWAYAT ================= -->
     <div id="page-riwayat" class="page-section hidden fade-in">
-      <h2 class="text-base font-bold text-stone-400 mb-5 uppercase tracking-widest">Riwayat Penjualan</h2>
+      <h2 class="text-base font-bold text-stone-400 mb-5 uppercase tracking-widest">Riwayat</h2>
+
+      <div class="flex gap-1.5 mb-5 bg-white border border-stone-200 p-1.5 rounded-2xl">
+        <button onclick="setRiwayatTab('jual')" id="riwayat-tab-jual" class="flex-1 py-3 rounded-xl text-base font-bold transition-colors">Penjualan</button>
+        <button onclick="setRiwayatTab('stok')" id="riwayat-tab-stok" class="flex-1 py-3 rounded-xl text-base font-bold transition-colors">Belanja Stok</button>
+      </div>
+
       <div id="riwayat-periode" class="flex gap-2 mb-5 overflow-x-auto"></div>
+
       <div id="list-riwayat" class="space-y-4"></div>
+      <div id="list-riwayat-stok" class="space-y-4 hidden"></div>
+
       <div id="riwayat-empty" class="hidden text-center py-12">
-        <p class="text-stone-400 font-medium text-base">Belum ada transaksi pada periode ini.</p>
+        <p class="text-stone-400 font-medium text-base" id="riwayat-empty-text">Belum ada transaksi pada periode ini.</p>
       </div>
     </div>
 
     <!-- ================= PENGATURAN ================= -->
     <div id="page-pengaturan" class="page-section hidden fade-in">
-      <div id="install-banner" class="hidden bg-pink-600 rounded-2xl p-5 mb-7 flex items-center gap-3 shadow-sm">
+      <div id="install-banner" class="hidden bg-sky-700 rounded-2xl p-5 mb-7 flex items-center gap-3 shadow-sm">
         <div class="w-12 h-12 rounded-xl overflow-hidden shrink-0 bg-white/20">
           <img src="icon-192.png" alt="Logo" class="w-full h-full object-cover">
         </div>
         <div class="flex-1 min-w-0">
           <p class="font-bold text-white text-base">Pasang Aplikasi Ini</p>
-          <p class="text-sm text-pink-100">Biar buka aplikasinya lebih gampang dari HP</p>
+          <p class="text-sm text-sky-100">Biar buka aplikasinya lebih gampang dari HP</p>
         </div>
-        <button onclick="pasangAplikasi()" class="bg-white text-pink-600 font-bold text-base px-4 py-3 rounded-xl active:scale-95 transition-transform shrink-0">Pasang</button>
+        <button onclick="pasangAplikasi()" class="bg-white text-sky-700 font-bold text-base px-4 py-3 rounded-xl active:scale-95 transition-transform shrink-0">Pasang</button>
       </div>
 
       <h2 class="text-base font-bold text-stone-400 mb-4 uppercase tracking-widest">Simpan & Pulihkan Data</h2>
       <div class="bg-white rounded-2xl border border-stone-200 shadow-sm mb-7 divide-y divide-stone-100 overflow-hidden">
         <button onclick="exportData()" class="w-full flex items-center gap-4 p-5 text-left active:bg-stone-50 transition-colors">
-          <div class="w-11 h-11 rounded-full bg-pink-50 flex items-center justify-center shrink-0">
-            <svg class="w-5 h-5 text-pink-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 10l5 5 5-5M12 15V3"></path></svg>
+          <div class="w-11 h-11 rounded-full bg-sky-50 flex items-center justify-center shrink-0">
+            <svg class="w-5 h-5 text-sky-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 10l5 5 5-5M12 15V3"></path></svg>
           </div>
           <div class="flex-1">
             <p class="font-bold text-stone-900 text-base">Simpan Data ke File</p>
@@ -173,8 +182,8 @@
           </div>
         </button>
         <label class="w-full flex items-center gap-4 p-5 text-left active:bg-stone-50 transition-colors cursor-pointer">
-          <div class="w-11 h-11 rounded-full bg-pink-50 flex items-center justify-center shrink-0">
-            <svg class="w-5 h-5 text-pink-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M17 8l-5-5-5 5M12 3v12"></path></svg>
+          <div class="w-11 h-11 rounded-full bg-sky-50 flex items-center justify-center shrink-0">
+            <svg class="w-5 h-5 text-sky-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M17 8l-5-5-5 5M12 3v12"></path></svg>
           </div>
           <div class="flex-1">
             <p class="font-bold text-stone-900 text-base">Kembalikan Data dari File</p>
@@ -193,7 +202,7 @@
         </button>
       </div>
 
-      <p class="text-center text-sm text-stone-400 pb-4">Yanti Handuk Apps · v2.0 · Data disimpan di HP ini saja</p>
+      <p class="text-center text-sm text-stone-400 pb-4">Yanti Handuk Apps · v2.0 · Dikembangkan oleh Yaris Developer</p>
     </div>
 
   </main>
@@ -211,7 +220,7 @@
     </button>
 
     <button onclick="openKasirModal()" class="flex flex-col items-center w-1/5 p-2 text-stone-400">
-      <div class="bg-pink-600 text-white p-4 rounded-full -mt-10 shadow-lg border-[5px] border-white active:scale-95 transition-transform">
+      <div class="bg-sky-700 text-white p-4 rounded-full -mt-10 shadow-lg border-[5px] border-white active:scale-95 transition-transform">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
       </div>
       <span class="text-xs font-bold mt-1">Kasir</span>
@@ -241,27 +250,27 @@
         <div class="space-y-5 mb-2">
           <div>
             <label class="block text-base font-semibold text-stone-700 mb-2">Pilih Barang</label>
-            <select id="jual-produk" required onchange="updateKasirPreview()" class="w-full bg-white border border-stone-300 text-stone-900 text-lg rounded-xl block p-4 outline-none focus:border-pink-600 focus:ring-1 focus:ring-pink-600"></select>
+            <select id="jual-produk" required onchange="updateKasirPreview()" class="w-full bg-white border border-stone-300 text-stone-900 text-lg rounded-xl block p-4 outline-none focus:border-sky-700 focus:ring-1 focus:ring-sky-700"></select>
           </div>
           <div>
             <label class="block text-base font-semibold text-stone-700 mb-2">Jumlah Barang</label>
             <div class="flex items-center gap-3">
               <button type="button" onclick="stepQty(-1)" class="w-12 h-12 rounded-xl bg-stone-100 text-stone-700 font-bold text-2xl active:scale-90 transition-transform shrink-0">−</button>
-              <input type="number" id="jual-qty" required min="1" oninput="updateKasirPreview()" class="w-full text-center bg-white border border-stone-300 text-stone-900 text-lg rounded-xl p-4 outline-none focus:border-pink-600 focus:ring-1 focus:ring-pink-600" value="1">
+              <input type="number" id="jual-qty" required min="1" oninput="updateKasirPreview()" class="w-full text-center bg-white border border-stone-300 text-stone-900 text-lg rounded-xl p-4 outline-none focus:border-sky-700 focus:ring-1 focus:ring-sky-700" value="1">
               <button type="button" onclick="stepQty(1)" class="w-12 h-12 rounded-xl bg-stone-100 text-stone-700 font-bold text-2xl active:scale-90 transition-transform shrink-0">+</button>
             </div>
             <p class="text-sm text-stone-400 mt-2" id="jual-stok-info">Stok tersedia: -</p>
           </div>
         </div>
 
-        <div id="kasir-preview" class="bg-pink-50 border border-pink-100 rounded-2xl p-4 my-5 space-y-2 hidden">
+        <div id="kasir-preview" class="bg-sky-50 border border-sky-100 rounded-2xl p-4 my-5 space-y-2 hidden">
           <div class="flex justify-between text-base"><span class="text-stone-500">Total Harga</span><span class="font-bold text-stone-900" id="kasir-subtotal">Rp 0</span></div>
-          <div class="flex justify-between text-base"><span class="text-stone-500">Perkiraan Untung</span><span class="font-bold text-pink-600" id="kasir-profit">Rp 0</span></div>
+          <div class="flex justify-between text-base"><span class="text-stone-500">Perkiraan Untung</span><span class="font-bold text-sky-700" id="kasir-profit">Rp 0</span></div>
           <div class="flex justify-between text-base"><span class="text-stone-500">Sisa Stok</span><span class="font-bold text-stone-900" id="kasir-sisa">0</span></div>
         </div>
         <p id="kasir-error" class="hidden text-base text-rose-600 font-semibold bg-rose-50 border border-rose-200 rounded-xl p-3 mb-5 text-center"></p>
 
-        <button type="submit" id="kasir-submit-btn" class="w-full bg-pink-600 text-white font-bold text-xl py-4 rounded-xl active:scale-95 transition-transform disabled:opacity-40 disabled:active:scale-100">
+        <button type="submit" id="kasir-submit-btn" class="w-full bg-sky-700 text-white font-bold text-xl py-4 rounded-xl active:scale-95 transition-transform disabled:opacity-40 disabled:active:scale-100">
           Simpan Penjualan
         </button>
       </form>
@@ -278,25 +287,25 @@
         <input type="hidden" id="prod-id">
         <div>
           <label class="block text-base font-semibold text-stone-700 mb-2">Nama Handuk</label>
-          <input type="text" id="prod-nama" required class="w-full bg-white border border-stone-300 rounded-xl p-4 text-lg outline-none focus:border-pink-600 focus:ring-1 focus:ring-pink-600" placeholder="Ketik nama...">
+          <input type="text" id="prod-nama" required class="w-full bg-white border border-stone-300 rounded-xl p-4 text-lg outline-none focus:border-sky-700 focus:ring-1 focus:ring-sky-700" placeholder="Ketik nama...">
         </div>
         <div class="grid grid-cols-2 gap-4">
           <div>
             <label class="block text-base font-semibold text-stone-700 mb-2">Harga Beli</label>
-            <input type="text" inputmode="numeric" id="prod-modal" required class="w-full bg-white border border-stone-300 rounded-xl p-4 text-lg outline-none focus:border-pink-600 focus:ring-1 focus:ring-pink-600" placeholder="Rp">
+            <input type="text" inputmode="numeric" id="prod-modal" required class="w-full bg-white border border-stone-300 rounded-xl p-4 text-lg outline-none focus:border-sky-700 focus:ring-1 focus:ring-sky-700" placeholder="Rp">
           </div>
           <div>
             <label class="block text-base font-semibold text-stone-700 mb-2">Harga Jual</label>
-            <input type="text" inputmode="numeric" id="prod-jual" required class="w-full bg-white border border-stone-300 rounded-xl p-4 text-lg outline-none focus:border-pink-600 focus:ring-1 focus:ring-pink-600" placeholder="Rp">
+            <input type="text" inputmode="numeric" id="prod-jual" required class="w-full bg-white border border-stone-300 rounded-xl p-4 text-lg outline-none focus:border-sky-700 focus:ring-1 focus:ring-sky-700" placeholder="Rp">
           </div>
         </div>
         <p id="prod-margin-warning" class="hidden text-sm text-amber-600 font-semibold bg-amber-50 border border-amber-200 rounded-xl p-3">⚠ Harga jual tidak lebih besar dari harga beli — cek kembali sebelum disimpan.</p>
         <div>
           <label id="prod-stok-label" class="block text-base font-semibold text-stone-700 mb-2">Stok Awal</label>
-          <input type="number" id="prod-stok" required min="0" class="w-full bg-white border border-stone-300 rounded-xl p-4 text-lg outline-none focus:border-pink-600 focus:ring-1 focus:ring-pink-600" placeholder="Jumlah stok">
+          <input type="number" id="prod-stok" required min="0" class="w-full bg-white border border-stone-300 rounded-xl p-4 text-lg outline-none focus:border-sky-700 focus:ring-1 focus:ring-sky-700" placeholder="Jumlah stok">
           <p class="text-sm text-stone-400 mt-2" id="prod-stok-hint">Kalau baru belanja stok, tutup ini dan pakai tombol "+ Stok" di halaman Gudang saja.</p>
         </div>
-        <button type="submit" class="w-full bg-pink-600 text-white font-bold text-lg py-4 mt-2 rounded-xl active:scale-95 transition-transform" id="produk-submit-btn">
+        <button type="submit" class="w-full bg-sky-700 text-white font-bold text-lg py-4 mt-2 rounded-xl active:scale-95 transition-transform" id="produk-submit-btn">
           + Masukkan ke Daftar
         </button>
       </form>
@@ -318,14 +327,14 @@
         <label class="block text-base font-semibold text-stone-700 mb-2">Belanja Berapa Banyak?</label>
         <div class="flex items-center gap-3 mb-5">
           <button type="button" onclick="stepRestock(-1)" class="w-12 h-12 rounded-xl bg-stone-100 text-stone-700 font-bold text-2xl active:scale-90 transition-transform shrink-0">−</button>
-          <input type="number" id="restock-jumlah" required min="1" oninput="updateRestockPreview()" class="w-full text-center bg-white border border-stone-300 text-stone-900 text-lg rounded-xl p-4 outline-none focus:border-pink-600 focus:ring-1 focus:ring-pink-600" value="1">
+          <input type="number" id="restock-jumlah" required min="1" oninput="updateRestockPreview()" class="w-full text-center bg-white border border-stone-300 text-stone-900 text-lg rounded-xl p-4 outline-none focus:border-sky-700 focus:ring-1 focus:ring-sky-700" value="1">
           <button type="button" onclick="stepRestock(1)" class="w-12 h-12 rounded-xl bg-stone-100 text-stone-700 font-bold text-2xl active:scale-90 transition-transform shrink-0">+</button>
         </div>
-        <div class="bg-pink-50 border border-pink-100 rounded-2xl p-4 mb-5 flex items-center justify-between">
+        <div class="bg-sky-50 border border-sky-100 rounded-2xl p-4 mb-5 flex items-center justify-between">
           <span class="text-base text-stone-500">Stok Jadi</span>
-          <span class="font-bold text-pink-600 text-xl" id="restock-stok-baru">0</span>
+          <span class="font-bold text-sky-700 text-xl" id="restock-stok-baru">0</span>
         </div>
-        <button type="submit" class="w-full bg-pink-600 text-white font-bold text-xl py-4 rounded-xl active:scale-95 transition-transform">
+        <button type="submit" class="w-full bg-sky-700 text-white font-bold text-xl py-4 rounded-xl active:scale-95 transition-transform">
           Simpan Stok Baru
         </button>
       </form>
@@ -362,9 +371,11 @@ firebase.initializeApp(firebaseConfig);
 const db = firebase.database();
 const refProduk = db.ref('produk');
 const refPenjualan = db.ref('penjualan');
+const refRestock = db.ref('restock');
 
 let produk = [];
 let penjualan = [];
+let restockLog = [];
 
 refProduk.on('value', snap => {
   const val = snap.val() || {};
@@ -376,9 +387,15 @@ refPenjualan.on('value', snap => {
   penjualan = Object.keys(val).map(id => ({ id, ...val[id] }));
   renderAll();
 });
+refRestock.on('value', snap => {
+  const val = snap.val() || {};
+  restockLog = Object.keys(val).map(id => ({ id, ...val[id] }));
+  renderAll();
+});
 
 let dashPeriod = 'hari';
 let riwayatPeriod = 'semua';
+let riwayatTab = 'jual';
 let confirmCallback = null;
 let editingProdukId = null;
 
@@ -402,7 +419,7 @@ function toast(message, type = 'success') {
   const colors = {
     success: 'bg-stone-900 text-white',
     error: 'bg-rose-600 text-white',
-    info: 'bg-pink-600 text-white'
+    info: 'bg-sky-700 text-white'
   };
   const el = document.createElement('div');
   el.className = `toast-in ${colors[type]} px-5 py-3 rounded-xl shadow-lg text-base font-bold pointer-events-auto max-w-full text-center`;
@@ -453,11 +470,11 @@ function switchTab(tabId) {
   document.getElementById('page-' + tabId).classList.remove('hidden');
 
   document.querySelectorAll('.nav-btn').forEach(el => {
-    el.classList.remove('text-pink-600');
+    el.classList.remove('text-sky-700');
     el.classList.add('text-stone-400');
   });
   const navEl = document.getElementById('nav-' + tabId);
-  if (navEl) { navEl.classList.remove('text-stone-400'); navEl.classList.add('text-pink-600'); }
+  if (navEl) { navEl.classList.remove('text-stone-400'); navEl.classList.add('text-sky-700'); }
 
   renderAll();
 }
@@ -472,7 +489,7 @@ const PERIODS = [
 function renderPeriodPills(containerId, current, setter) {
   const wrap = document.getElementById(containerId);
   wrap.innerHTML = PERIODS.map(p => `
-    <button onclick="${setter}('${p.id}')" class="px-5 py-2.5 rounded-full text-base font-bold whitespace-nowrap transition-colors ${p.id === current ? 'bg-pink-600 text-white' : 'bg-white text-stone-500 border border-stone-200'}">${p.label}</button>
+    <button onclick="${setter}('${p.id}')" class="px-5 py-2.5 rounded-full text-base font-bold whitespace-nowrap transition-colors ${p.id === current ? 'bg-sky-700 text-white' : 'bg-white text-stone-500 border border-stone-200'}">${p.label}</button>
   `).join('');
 }
 function setDashPeriod(p) { dashPeriod = p; renderAll(); }
@@ -497,7 +514,7 @@ function inPeriod(dateStr, period) {
 function stokStatus(stok) {
   if (stok <= 0) return { label: 'Habis', cls: 'bg-rose-50 text-rose-600 border-rose-200' };
   if (stok < 5) return { label: 'Tipis', cls: 'bg-amber-50 text-amber-600 border-amber-200' };
-  return { label: 'Aman', cls: 'bg-pink-50 text-pink-600 border-pink-200' };
+  return { label: 'Aman', cls: 'bg-sky-50 text-sky-700 border-sky-200' };
 }
 
 /* ---------- KASIR MODAL ---------- */
@@ -653,10 +670,29 @@ function submitRestock(e) {
   const p = produk.find(x => x.id === restockingId);
   const tambah = parseInt(document.getElementById('restock-jumlah').value, 10);
   if (!p || !tambah || tambah <= 0) { toast('Jumlah tidak valid', 'error'); return; }
-  refProduk.child(p.id).update({ stok: p.stok + tambah, restockTerakhir: new Date().toISOString() }).then(() => {
+  const tanggal = new Date().toISOString();
+  const idBaru = refRestock.push().key;
+  const updates = {};
+  updates['produk/' + p.id + '/stok'] = p.stok + tambah;
+  updates['produk/' + p.id + '/restockTerakhir'] = tanggal;
+  updates['restock/' + idBaru] = { produkId: p.id, namaProduk: p.nama, jumlah: tambah, hargaBeliSatuan: p.modal, stokSebelum: p.stok, stokSesudah: p.stok + tambah, tanggal };
+  db.ref().update(updates).then(() => {
     closeRestockModal();
     toast(`Stok "${p.nama}" ditambah ✓`);
   }).catch(() => toast('Gagal menyimpan, cek koneksi internet', 'error'));
+}
+function deleteRestock(id) {
+  const r = restockLog.find(x => x.id === id);
+  if (!r) return;
+  openConfirm('Hapus Riwayat Belanja?', `Catatan belanja "${r.namaProduk}" +${r.jumlah} akan dihapus dan stok akan dikurangi kembali.`, () => {
+    const item = produk.find(p => p.id === r.produkId);
+    const updates = {};
+    if (item) updates['produk/' + item.id + '/stok'] = Math.max(0, item.stok - r.jumlah);
+    updates['restock/' + id] = null;
+    db.ref().update(updates).then(() => {
+      toast('Riwayat belanja dihapus & stok disesuaikan');
+    }).catch(() => toast('Gagal menghapus, cek koneksi internet', 'error'));
+  }, 'Hapus');
 }
 
 function deleteProduk(id) {
@@ -686,7 +722,7 @@ function deleteTransaksi(id) {
 
 /* ---------- SETTINGS ---------- */
 function exportData() {
-  const payload = { produk, penjualan, exportedAt: new Date().toISOString() };
+  const payload = { produk, penjualan, restock: restockLog, exportedAt: new Date().toISOString() };
   const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
@@ -709,9 +745,12 @@ function importData(event) {
         data.produk.forEach(p => { const { id, ...rest } = p; produkObj[id || refProduk.push().key] = rest; });
         const penjualanObj = {};
         data.penjualan.forEach(j => { const { id, ...rest } = j; penjualanObj[id || refPenjualan.push().key] = rest; });
+        const restockObj = {};
+        (Array.isArray(data.restock) ? data.restock : []).forEach(r => { const { id, ...rest } = r; restockObj[id || refRestock.push().key] = rest; });
         db.ref().update({
           produk: produkObj,
-          penjualan: penjualanObj
+          penjualan: penjualanObj,
+          restock: restockObj
         }).then(() => {
           toast('Data berhasil dipulihkan ✓');
         }).catch(() => toast('Gagal memulihkan, cek koneksi internet', 'error'));
@@ -725,7 +764,7 @@ function importData(event) {
 }
 function confirmResetData() {
   openConfirm('Reset Semua Data?', 'Seluruh data gudang dan riwayat transaksi akan dihapus permanen dan tidak bisa dikembalikan.', () => {
-    db.ref().update({ produk: null, penjualan: null }).then(() => {
+    db.ref().update({ produk: null, penjualan: null, restock: null }).then(() => {
       toast('Semua data telah direset');
     }).catch(() => toast('Gagal mereset, cek koneksi internet', 'error'));
   }, 'Ya, Hapus Semua');
@@ -757,7 +796,7 @@ function renderDashboard() {
   terlarisList.innerHTML = terlaris.length ? terlaris.map(([nama, qty], i) => `
     <li class="flex items-center justify-between py-3.5 first:pt-0 last:pb-0">
       <div class="flex items-center gap-3 min-w-0">
-        <span class="w-8 h-8 rounded-full bg-pink-50 text-pink-600 text-base font-bold flex items-center justify-center shrink-0">${i + 1}</span>
+        <span class="w-8 h-8 rounded-full bg-sky-50 text-sky-700 text-base font-bold flex items-center justify-center shrink-0">${i + 1}</span>
         <span class="font-semibold text-stone-900 truncate">${nama}</span>
       </div>
       <span class="text-stone-500 text-base font-medium shrink-0">${qty} terjual</span>
@@ -810,7 +849,7 @@ function renderGudang() {
           <span class="px-3 py-1.5 rounded-xl font-bold text-sm border shrink-0 ${s.cls}">${s.label} · ${p.stok}</span>
         </div>
         <div class="flex gap-2 mt-5 pt-4 border-t border-stone-100">
-          <button onclick="openRestockModal('${p.id}')" class="flex-1 bg-pink-50 text-pink-600 font-bold text-base py-3 rounded-xl active:scale-95 transition-transform">+ Stok</button>
+          <button onclick="openRestockModal('${p.id}')" class="flex-1 bg-sky-50 text-sky-700 font-bold text-base py-3 rounded-xl active:scale-95 transition-transform">+ Stok</button>
           <button onclick="openProdukModal('edit','${p.id}')" class="flex-1 bg-stone-100 text-stone-700 font-bold text-base py-3 rounded-xl active:scale-95 transition-transform">Edit</button>
           <button onclick="deleteProduk('${p.id}')" class="flex-1 bg-rose-50 text-rose-600 font-bold text-base py-3 rounded-xl active:scale-95 transition-transform">Hapus</button>
         </div>
@@ -819,37 +858,89 @@ function renderGudang() {
   }
 }
 
+function setRiwayatTab(tab) {
+  riwayatTab = tab;
+  renderRiwayat();
+}
+
 function renderRiwayat() {
   renderPeriodPills('riwayat-periode', riwayatPeriod, 'setRiwayatPeriod');
-  const scoped = penjualan.filter(j => inPeriod(j.tanggal, riwayatPeriod)).slice().sort((a, b) => new Date(b.tanggal) - new Date(a.tanggal));
-  const list = document.getElementById('list-riwayat');
-  const emptyEl = document.getElementById('riwayat-empty');
 
-  if (scoped.length === 0) {
-    list.innerHTML = '';
-    emptyEl.classList.remove('hidden');
-    return;
+  const tabJual = document.getElementById('riwayat-tab-jual');
+  const tabStok = document.getElementById('riwayat-tab-stok');
+  const listJual = document.getElementById('list-riwayat');
+  const listStok = document.getElementById('list-riwayat-stok');
+  const emptyEl = document.getElementById('riwayat-empty');
+  const emptyText = document.getElementById('riwayat-empty-text');
+
+  const activeCls = 'bg-sky-700 text-white';
+  const inactiveCls = 'text-stone-500';
+  tabJual.className = `flex-1 py-3 rounded-xl text-base font-bold transition-colors ${riwayatTab === 'jual' ? activeCls : inactiveCls}`;
+  tabStok.className = `flex-1 py-3 rounded-xl text-base font-bold transition-colors ${riwayatTab === 'stok' ? activeCls : inactiveCls}`;
+
+  if (riwayatTab === 'jual') {
+    listStok.classList.add('hidden');
+    listJual.classList.remove('hidden');
+
+    const scoped = penjualan.filter(j => inPeriod(j.tanggal, riwayatPeriod)).slice().sort((a, b) => new Date(b.tanggal) - new Date(a.tanggal));
+    if (scoped.length === 0) {
+      listJual.innerHTML = '';
+      emptyText.innerText = 'Belum ada penjualan pada periode ini.';
+      emptyEl.classList.remove('hidden');
+      return;
+    }
+    emptyEl.classList.add('hidden');
+    listJual.innerHTML = scoped.map(j => {
+      const tgl = new Date(j.tanggal);
+      const waktu = tgl.toLocaleDateString('id-ID', { day: 'numeric', month: 'short', year: 'numeric' }) + ' · ' + tgl.toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' });
+      return `
+      <div class="bg-white p-5 rounded-2xl border border-stone-200 shadow-sm">
+        <div class="flex justify-between items-start gap-3">
+          <div class="min-w-0">
+            <h4 class="font-bold text-stone-900 text-lg truncate">${j.namaProduk}</h4>
+            <p class="text-sm text-stone-400 mt-1.5">${waktu}</p>
+            <p class="text-base text-stone-500 mt-1.5">${j.qty} x ${formatRp(j.hargaSatuan)}</p>
+          </div>
+          <div class="text-right shrink-0">
+            <p class="font-bold text-stone-900 text-lg">${formatRp(j.omzet)}</p>
+            <p class="text-sm text-sky-700 font-semibold mt-1">+${formatRp(j.profit)} profit</p>
+          </div>
+        </div>
+        <button onclick="deleteTransaksi('${j.id}')" class="w-full mt-4 pt-4 border-t border-stone-100 text-rose-600 font-bold text-base active:scale-95 transition-transform">Batalkan Transaksi</button>
+      </div>`;
+    }).join('');
+  } else {
+    listJual.classList.add('hidden');
+    listStok.classList.remove('hidden');
+
+    const scoped = restockLog.filter(r => inPeriod(r.tanggal, riwayatPeriod)).slice().sort((a, b) => new Date(b.tanggal) - new Date(a.tanggal));
+    if (scoped.length === 0) {
+      listStok.innerHTML = '';
+      emptyText.innerText = 'Belum ada belanja stok pada periode ini.';
+      emptyEl.classList.remove('hidden');
+      return;
+    }
+    emptyEl.classList.add('hidden');
+    listStok.innerHTML = scoped.map(r => {
+      const tgl = new Date(r.tanggal);
+      const waktu = tgl.toLocaleDateString('id-ID', { day: 'numeric', month: 'short', year: 'numeric' }) + ' · ' + tgl.toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' });
+      return `
+      <div class="bg-white p-5 rounded-2xl border border-stone-200 shadow-sm">
+        <div class="flex justify-between items-start gap-3">
+          <div class="min-w-0">
+            <h4 class="font-bold text-stone-900 text-lg truncate">${r.namaProduk}</h4>
+            <p class="text-sm text-stone-400 mt-1.5">${waktu}</p>
+            <p class="text-base text-stone-500 mt-1.5">Stok ${r.stokSebelum} → ${r.stokSesudah}</p>
+          </div>
+          <div class="text-right shrink-0">
+            <p class="font-bold text-sky-700 text-lg">+${r.jumlah}</p>
+            <p class="text-sm text-stone-400 mt-1">unit</p>
+          </div>
+        </div>
+        <button onclick="deleteRestock('${r.id}')" class="w-full mt-4 pt-4 border-t border-stone-100 text-rose-600 font-bold text-base active:scale-95 transition-transform">Hapus Riwayat</button>
+      </div>`;
+    }).join('');
   }
-  emptyEl.classList.add('hidden');
-  list.innerHTML = scoped.map(j => {
-    const tgl = new Date(j.tanggal);
-    const waktu = tgl.toLocaleDateString('id-ID', { day: 'numeric', month: 'short', year: 'numeric' }) + ' · ' + tgl.toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' });
-    return `
-    <div class="bg-white p-5 rounded-2xl border border-stone-200 shadow-sm">
-      <div class="flex justify-between items-start gap-3">
-        <div class="min-w-0">
-          <h4 class="font-bold text-stone-900 text-lg truncate">${j.namaProduk}</h4>
-          <p class="text-sm text-stone-400 mt-1.5">${waktu}</p>
-          <p class="text-base text-stone-500 mt-1.5">${j.qty} x ${formatRp(j.hargaSatuan)}</p>
-        </div>
-        <div class="text-right shrink-0">
-          <p class="font-bold text-stone-900 text-lg">${formatRp(j.omzet)}</p>
-          <p class="text-sm text-pink-600 font-semibold mt-1">+${formatRp(j.profit)} profit</p>
-        </div>
-      </div>
-      <button onclick="deleteTransaksi('${j.id}')" class="w-full mt-4 pt-4 border-t border-stone-100 text-rose-600 font-bold text-base active:scale-95 transition-transform">Batalkan Transaksi</button>
-    </div>`;
-  }).join('');
 }
 
 /* ---------- PASANG APLIKASI (PWA install) ---------- */
