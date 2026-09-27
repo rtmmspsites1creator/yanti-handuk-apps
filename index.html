@@ -12,6 +12,7 @@
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
 <script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.4/chart.umd.min.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
 <style>
@@ -99,6 +100,23 @@
             <p class="text-2xl font-bold text-stone-900 font-display" id="dash-aset">Rp 0</p>
           </div>
         </div>
+      </div>
+
+      <div class="flex items-center justify-between mb-4">
+        <h2 class="text-base font-bold text-stone-400 uppercase tracking-widest">Grafik Penjualan</h2>
+        <select id="grafik-range" onchange="grafikRange=this.value; renderGrafik()" class="bg-white border border-stone-200 text-stone-700 text-sm font-bold rounded-xl pl-3 pr-8 py-2 outline-none focus:border-sky-700">
+          <option value="8">8 Minggu</option>
+          <option value="12" selected>12 Minggu</option>
+          <option value="26">6 Bulan</option>
+          <option value="52">1 Tahun</option>
+          <option value="semua">Semua</option>
+        </select>
+      </div>
+      <div class="bg-white rounded-3xl border border-stone-200 p-6 shadow-sm mb-8">
+        <div class="relative h-56">
+          <canvas id="chart-penjualan"></canvas>
+        </div>
+        <p id="grafik-empty" class="hidden text-stone-400 font-medium text-base text-center py-8">Belum ada data penjualan untuk ditampilkan.</p>
       </div>
 
       <h2 class="text-base font-bold text-stone-400 mb-4 uppercase tracking-widest">Barang Paling Laku</h2>
@@ -357,7 +375,6 @@
 </div>
 
 <script>
-/* ---------- FIREBASE ---------- */
 const firebaseConfig = {
   apiKey: "AIzaSyBqvpAm40z8kCfSmsEzhB9o4F0yNoCdjQY",
   authDomain: "yantihanduk-adc35.firebaseapp.com",
@@ -393,6 +410,8 @@ refRestock.on('value', snap => {
   renderAll();
 });
 
+let chartPenjualan = null;
+let grafikRange = '12';
 let dashPeriod = 'hari';
 let riwayatPeriod = 'semua';
 let riwayatTab = 'jual';
@@ -413,7 +432,6 @@ function formatTanggalRestock(iso) {
   return d.toLocaleDateString('id-ID', { day: 'numeric', month: 'short', year: 'numeric' });
 }
 
-/* ---------- TOAST ---------- */
 function toast(message, type = 'success') {
   const wrap = document.getElementById('toast-container');
   const colors = {
@@ -428,7 +446,6 @@ function toast(message, type = 'success') {
   setTimeout(() => { el.style.opacity = '0'; el.style.transition = 'opacity .25s'; setTimeout(() => el.remove(), 250); }, 2200);
 }
 
-/* ---------- CONFIRM MODAL ---------- */
 function openConfirm(title, desc, onConfirm, actionLabel = 'Hapus') {
   document.getElementById('confirm-title').innerText = title;
   document.getElementById('confirm-desc').innerText = desc;
@@ -446,7 +463,6 @@ document.getElementById('confirm-action-btn').addEventListener('click', () => {
   closeConfirm();
 });
 
-/* ---------- CURRENCY INPUT FORMATTING ---------- */
 function bindCurrencyInput(el) {
   el.addEventListener('input', () => {
     const raw = parseCurrency(el.value);
@@ -464,7 +480,6 @@ function checkMargin() {
 bindCurrencyInput(document.getElementById('prod-modal'));
 bindCurrencyInput(document.getElementById('prod-jual'));
 
-/* ---------- TABS ---------- */
 function switchTab(tabId) {
   document.querySelectorAll('.page-section').forEach(el => el.classList.add('hidden'));
   document.getElementById('page-' + tabId).classList.remove('hidden');
@@ -479,7 +494,6 @@ function switchTab(tabId) {
   renderAll();
 }
 
-/* ---------- PERIOD PILLS ---------- */
 const PERIODS = [
   { id: 'hari', label: 'Hari Ini' },
   { id: 'minggu', label: 'Minggu Ini' },
@@ -515,7 +529,6 @@ function stokStatus(stok) {
   return { label: 'Aman', cls: 'bg-sky-50 text-sky-700 border-sky-200' };
 }
 
-/* ---------- KASIR MODAL ---------- */
 function openKasirModal() {
   if (produk.length === 0) { toast('Tambahkan handuk ke gudang terlebih dahulu', 'error'); switchTab('gudang'); return; }
   const select = document.getElementById('jual-produk');
@@ -585,7 +598,6 @@ function catatPenjualan(e) {
   }).catch(() => toast('Gagal menyimpan, cek koneksi internet', 'error'));
 }
 
-/* ---------- PRODUK MODAL (Add/Edit) ---------- */
 function openProdukModal(mode, id) {
   const form = document.getElementById('form-produk');
   form.reset();
@@ -635,7 +647,6 @@ function submitProduk(e) {
     closeProdukModal();
   }).catch(() => toast('Gagal menyimpan, cek koneksi internet', 'error'));
 }
-/* ---------- TAMBAH STOK (belanja/restock) ---------- */
 let restockingId = null;
 function openRestockModal(id) {
   const p = produk.find(x => x.id === id);
@@ -703,7 +714,6 @@ function deleteProduk(id) {
   });
 }
 
-/* ---------- RIWAYAT ---------- */
 function deleteTransaksi(id) {
   const t = penjualan.find(x => x.id === id);
   if (!t) return;
@@ -718,7 +728,6 @@ function deleteTransaksi(id) {
   });
 }
 
-/* ---------- SETTINGS ---------- */
 function exportData() {
   const payload = { produk, penjualan, restock: restockLog, exportedAt: new Date().toISOString() };
   const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
@@ -768,11 +777,70 @@ function confirmResetData() {
   }, 'Ya, Hapus Semua');
 }
 
-/* ---------- RENDER ---------- */
 function renderAll() {
   renderDashboard();
+  renderGrafik();
   renderGudang();
   renderRiwayat();
+}
+
+function getWeekStart(dateStr) {
+  const d = new Date(dateStr);
+  d.setHours(0, 0, 0, 0);
+  d.setDate(d.getDate() - d.getDay());
+  return d.getTime();
+}
+
+function renderGrafik() {
+  const canvasEl = document.getElementById('chart-penjualan');
+  const emptyEl = document.getElementById('grafik-empty');
+  const weekMap = {};
+  penjualan.forEach(j => {
+    const ws = getWeekStart(j.tanggal);
+    if (!weekMap[ws]) weekMap[ws] = { omzet: 0, profit: 0 };
+    weekMap[ws].omzet += j.omzet;
+    weekMap[ws].profit += j.profit;
+  });
+
+  let weeks = Object.keys(weekMap).map(Number).sort((a, b) => a - b);
+  if (grafikRange !== 'semua') weeks = weeks.slice(-parseInt(grafikRange, 10));
+
+  if (weeks.length === 0) {
+    canvasEl.classList.add('hidden');
+    emptyEl.classList.remove('hidden');
+    if (chartPenjualan) { chartPenjualan.destroy(); chartPenjualan = null; }
+    return;
+  }
+  canvasEl.classList.remove('hidden');
+  emptyEl.classList.add('hidden');
+
+  const labels = weeks.map(ts => new Date(ts).toLocaleDateString('id-ID', { day: 'numeric', month: 'short' }));
+  const dataOmzet = weeks.map(ts => weekMap[ts].omzet);
+  const dataProfit = weeks.map(ts => weekMap[ts].profit);
+
+  if (chartPenjualan) chartPenjualan.destroy();
+  chartPenjualan = new Chart(canvasEl.getContext('2d'), {
+    type: 'line',
+    data: {
+      labels,
+      datasets: [
+        { label: 'Omzet', data: dataOmzet, borderColor: '#0369a1', backgroundColor: 'rgba(3,105,161,0.1)', tension: 0.3, fill: true, pointRadius: 3, pointBackgroundColor: '#0369a1' },
+        { label: 'Profit', data: dataProfit, borderColor: '#16a34a', backgroundColor: 'rgba(22,163,74,0.1)', tension: 0.3, fill: true, pointRadius: 3, pointBackgroundColor: '#16a34a' }
+      ]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { position: 'bottom', labels: { boxWidth: 10, usePointStyle: true, font: { size: 12, weight: '600' } } },
+        tooltip: { callbacks: { label: ctx => `${ctx.dataset.label}: ${formatRp(ctx.parsed.y)}` } }
+      },
+      scales: {
+        y: { ticks: { callback: v => formatRp(v).replace(/\s/g, ''), font: { size: 10 } }, grid: { color: '#f1f5f9' } },
+        x: { grid: { display: false }, ticks: { font: { size: 10 } } }
+      }
+    }
+  });
 }
 
 function renderDashboard() {
@@ -941,7 +1009,6 @@ function renderRiwayat() {
   }
 }
 
-/* ---------- PASANG APLIKASI (PWA install) ---------- */
 let deferredInstallPrompt = null;
 window.addEventListener('beforeinstallprompt', (e) => {
   e.preventDefault();
@@ -960,7 +1027,6 @@ window.addEventListener('appinstalled', () => {
   document.getElementById('install-banner').classList.add('hidden');
 });
 
-/* ---------- INIT ---------- */
 switchTab('dashboard');
 
 if ('serviceWorker' in navigator) {
