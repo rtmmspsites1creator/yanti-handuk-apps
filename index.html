@@ -125,6 +125,11 @@
         <p id="grafik-empty" class="hidden text-stone-400 font-medium text-base text-center py-8">Belum ada data penjualan untuk ditampilkan.</p>
       </div>
 
+      <h2 class="text-base font-bold text-stone-400 mb-4 uppercase tracking-widest">Pemasukan Bulanan</h2>
+      <div class="bg-white rounded-3xl border border-stone-200 p-6 shadow-sm mb-8">
+        <ul id="bulanan-list" class="divide-y divide-stone-100 text-lg text-stone-800"></ul>
+      </div>
+
       <h2 class="text-base font-bold text-stone-400 mb-4 uppercase tracking-widest">Barang Paling Laku</h2>
       <div class="bg-white rounded-3xl border border-stone-200 p-6 shadow-sm mb-8">
         <ul id="terlaris-list" class="divide-y divide-stone-100 text-lg text-stone-800"></ul>
@@ -867,9 +872,52 @@ function confirmResetData() {
   }, 'Ya, Hapus Semua');
 }
 
+function ringkasPemasukanBulanan(transaksi, kolomNominal = 'total') {
+  const kelompok = new Map();
+
+  (transaksi || []).forEach(item => {
+    const tanggal = new Date(item && item.tanggal);
+    const nominal = Number(item && item[kolomNominal]);
+    if (Number.isNaN(tanggal.getTime()) || !Number.isFinite(nominal)) return;
+
+    const tahun = tanggal.getFullYear();
+    const bulan = tanggal.getMonth() + 1;
+    const kunci = `${tahun}-${String(bulan).padStart(2, '0')}`;
+
+    const entri = kelompok.get(kunci) || {
+      kunci,
+      tahun,
+      bulan,
+      label: tanggal.toLocaleDateString('id-ID', { month: 'long', year: 'numeric' }),
+      total: 0,
+      jumlahTransaksi: 0
+    };
+
+    entri.total += nominal;
+    entri.jumlahTransaksi += 1;
+    kelompok.set(kunci, entri);
+  });
+
+  return Array.from(kelompok.values()).sort((a, b) => b.kunci.localeCompare(a.kunci));
+}
+
+function renderPemasukanBulanan() {
+  const el = document.getElementById('bulanan-list');
+  const ringkasan = ringkasPemasukanBulanan(penjualan, 'omzet').slice(0, 12);
+  el.innerHTML = ringkasan.length ? ringkasan.map(r => `
+    <li class="flex items-center justify-between py-3.5 first:pt-0 last:pb-0">
+      <div class="min-w-0">
+        <p class="font-semibold text-stone-900">${escapeHtml(r.label)}</p>
+        <p class="text-sm text-stone-400 font-medium">${r.jumlahTransaksi} transaksi</p>
+      </div>
+      <span class="font-bold text-stone-900 shrink-0">${formatRp(r.total)}</span>
+    </li>`).join('') : '<li class="text-stone-400 font-medium text-base text-center py-4">Belum ada pemasukan untuk dirangkum.</li>';
+}
+
 function renderAll() {
   renderDashboard();
   renderGrafik();
+  renderPemasukanBulanan();
   renderGudang();
   renderRiwayat();
 }
