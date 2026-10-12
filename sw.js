@@ -1,4 +1,4 @@
-const CACHE_NAME = 'yanti-handuk-v3';
+const CACHE_NAME = 'yanti-handuk-v4';
 const ASSETS = [
   './',
   './index.html',
@@ -28,7 +28,6 @@ self.addEventListener('activate', (e) => {
 
 self.addEventListener('fetch', (e) => {
   const req = e.request;
-  // Hanya urus file punya aplikasi sendiri (bukan Firebase/Google Fonts/dll)
   if (req.method !== 'GET') return;
   const url = new URL(req.url);
   if (url.origin !== self.location.origin) return;
